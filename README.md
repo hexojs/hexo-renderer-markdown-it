@@ -1,37 +1,18 @@
-# hexo-renderer-marked
+# hexo-renderer-markdown-it
 
-[![Build Status](https://travis-ci.org/hexojs/hexo-renderer-marked.svg?branch=master)](https://travis-ci.org/hexojs/hexo-renderer-marked)  [![NPM version](https://badge.fury.io/js/hexo-renderer-marked.svg)](http://badge.fury.io/js/hexo-renderer-marked) [![Coverage Status](https://img.shields.io/coveralls/hexojs/hexo-renderer-marked.svg)](https://coveralls.io/r/hexojs/hexo-renderer-marked?branch=master)
-
-Add support for [Markdown]. This plugin uses [marked] as render engine.
+Add support for [Markdown] and [CommonMark]. This plugin uses [Markdown-it] as a render engine on [Hexo].
 
 ## Installation
 
 ``` bash
-$ npm install hexo-renderer-marked --save
+$ npm install hexo-renderer-markdown-it --save
 ```
 
 ## Options
 
-You can configure this plugin in `_config.yml`.
+Markdown-it offers powerful customization. Sadly, it's not implemented in this plugin as of now, although I'm making this my top priority.
 
-``` yaml
-marked:
-  gfm: true
-  pedantic: false
-  sanitize: false
-  tables: true
-  breaks: true
-  smartLists: true
-  smartypants: true
-```
 
-- **gfm** - Enables [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown)
-- **pedantic** - Conform to obscure parts of `markdown.pl` as much as possible. Don't fix any of the original markdown bugs or poor behavior.
-- **sanitize** - Sanitize the output. Ignore any HTML that has been input.
-- **tables** - Enable GFM [tables](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#wiki-tables). This option requires the `gfm` option to be true.
-- **breaks** - Enable GFM [line breaks](https://help.github.com/articles/github-flavored-markdown#newlines). This option requires the `gfm` option to be true.
-- **smartLists** - Use smarter list behavior than the original markdown.
-- **smartypants** - Use "smart" typograhic punctuation for things like quotes and dashes.
-
+[CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
-[marked]: https://github.com/chjj/marked
+[Markdown-it]: https://github.com/markdown-it/markdown-it
