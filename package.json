@@ -1,0 +1,22 @@
+{
+  "name": "hexo-renderer-markdown-it",
+  "version": "0.0.1",
+  "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/celsomiranda/hexo-renderer-markdown-it.git"
+  },
+  "engines": {
+    "hexo": ">=1.0.0"
+  },
+  "keywords": ["hexo", "markdown", "markdown-it", "renderer"],
+  "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.github.com/celsomiranda/hexo-renderer-markdown-it/master/LICENSE"
+  },
+  "dependencies": {
+    "markdown-it": "^3.0.2"
+  }
+}
