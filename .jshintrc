@@ -8,6 +8,7 @@
   "undef": true,
   "unused": "vars",
   "globals": {
-    "Promise": true
+    "Promise": true,
+    "hexo": true
   }
 }
