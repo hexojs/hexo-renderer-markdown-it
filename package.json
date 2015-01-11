@@ -25,8 +25,7 @@
   "bugs": {
     "url": "https://github.com/celsomiranda/hexo-renderer-markdown-it/issues"
   },
-  "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it"
-}
+  "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
     "markdown-it": "^3.0.2",
     "object-assign": "^2.0.0"
