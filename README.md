@@ -7,16 +7,16 @@ In it's current version, [Hexo] with `hexo-renderer-marked` predefined as a mark
 
 To use `hexo-renderer-markdown-it` you will have to:
 
-1. Remove `hexo-renderer-marked`
+- Remove `hexo-renderer-marked`
 ``` bash
 $ npm uninstall hexo-renderer-marked --save
 ```
 
-2. Install `hexo-renderer-markdown-it`
+- Install `hexo-renderer-markdown-it`
 ``` bash
 $ npm install hexo-renderer-markdown-it --save
 ```
-3. Configure the plugin using the template in the configuration section.
+- Configure the plugin using the template in the configuration section.
 
 ## Configuration
 [Markdown-it] is one of the most flexible markdown renderers in node. That means it comes with lots of configuration options and even plugins to extend it self.
