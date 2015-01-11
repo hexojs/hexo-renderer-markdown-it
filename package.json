@@ -12,9 +12,10 @@
   },
   "keywords": [
     "hexo",
+    "renderer",
     "markdown",
     "markdown-it",
-    "renderer"
+    "hexo-renderer"
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
   "license": {
