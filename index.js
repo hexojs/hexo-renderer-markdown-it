@@ -1,18 +1,15 @@
+var renderer = require('./lib/renderer');
 var assign = require('object-assign');
-hexo.config.MarkdownIt = assign({
-  html:         true,
-  xhtmlOut:     false,
-  breaks:       false,
-  langPrefix:   '',
-  linkify:      false,
-  typographer:  false,
-  quotes: '“”‘’'
-}, hexo.config.MarkdownIt);
 
-var markdownIt = require('markdown-it')(hexo.config.MarkdownIt);
-var renderer = function(data, options){
-  return markdownIt.render(data.text);
-};
+hexo.config.markdown = assign({
+  html: false,
+  xhtmlOut: false,
+  breaks: false,
+  langPrefix: '',
+  linkify: false,
+  typographer: false,
+  quotes: '“”‘’'
+}, hexo.config.markdown);
 
 hexo.extend.renderer.register('md', 'html', renderer, true);
 hexo.extend.renderer.register('markdown', 'html', renderer, true);
