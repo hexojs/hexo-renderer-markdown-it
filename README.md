@@ -7,45 +7,59 @@ In it's current version, [Hexo] with `hexo-renderer-marked` predefined as a mark
 
 To use `hexo-renderer-markdown-it` you will have to:
 
-- Remove `hexo-renderer-marked`
-``` bash
-$ npm uninstall hexo-renderer-marked --save
+**Step 1 -** Remove `hexo-renderer-marked`
+``` powershell
+$ npm un hexo-renderer-marked --save
 ```
 
-- Install `hexo-renderer-markdown-it`
-``` bash
-$ npm install hexo-renderer-markdown-it --save
+**Step 2 -** Install `hexo-renderer-markdown-it`
+``` powershell
+$ npm i hexo-renderer-markdown-it --save
 ```
-- Configure the plugin using the template in the configuration section.
+
+**Step 3 -** Configure the plugin (or leave empty for reasonable defaults).
 
 ## Configuration
-[Markdown-it] is one of the most flexible markdown renderers in node. That means it comes with lots of configuration options and even plugins to extend it self.
 
-To be able to expose all this functionality inside [Hexo] would be an enormous task. That said, feel free to open an issue if there's something you need.
+While the options to enable, or disable [Markdown-it] plugins is not yet implemented, most if not all of the options available on the *vanila* parser have been exposed.
 
-You can configure this plugin by copy and pasting the following code into your main `config.yml`.
+#### Option 1 - Choose defaults
+
+You can choose the *CommonMark Strict Mode*, which tells the render to follow the latest [CommonMark] spec.
 
 ``` yaml
 # Markdown-it config
-## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/blob/master/README.md
-MarkdownIt:
-  # Enable HTML tags in source. Also needed so hexo can process code tags and
-  # shortcodes.
-  html: true,
-  # Use '/' to close single tags (<br />). This is only for full CommonMark
-  # compatibility.
-  xhtmlOut: false,
-  # Convert '\n' (newline) in paragraphs into <br>
-  breaks: false,
-  # CSS language prefix for fenced blocks. Useful for external highlighters.
-  langPrefix: '',  
-  # Autoconvert URL-like text to links
-  linkify: true,
-  # Enable some language-neutral replacement & quotes beautification
-  typographer: true,
-  # Double + single quotes replacement pairs, when typographer enabled,
-  # and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
-  quotes: '“”‘’',
+## Docs: https://www.npmjs.com/package/hexo-renderer-markdown-it
+markdown: 'commonmark'
+```
+
+Or you can use *Zero Mode*. This disables most of the parser functionality. You should only use this mode if you want nothing more than *italics* or **bold**.
+
+``` yaml
+# Markdown-it config
+## Docs: https://www.npmjs.com/package/hexo-renderer-markdown-it
+markdown: 'zero'
+```
+
+#### Option 2 - Don't pass any options to the parser
+
+If you don't pass any configurations to the parser, it defaults to something very close to *Github Flavored Markdown*.
+
+#### Option 3 - Specify each module (extending from GFM)
+
+You have the option to pass a very specific configuration to the parser.
+
+``` yaml
+# Markdown-it config
+## Docs: https://www.npmjs.com/package/hexo-renderer-markdown-it
+markdown:
+  html: true
+  xhtmlOut: false
+  breaks: false
+  langPrefix: ''
+  linkify: true
+  typographer: true
+  quotes: '“”‘’'
 ```
 
 [CommonMark]: http://commonmark.org/
