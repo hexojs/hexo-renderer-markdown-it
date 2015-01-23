@@ -23,6 +23,8 @@ $ npm i hexo-renderer-markdown-it --save
 
 While the options to enable, or disable [Markdown-it] plugins is not yet implemented, most if not all of the options available on the *vanila* parser have been exposed.
 
+Please only choose one of the following options.
+
 #### Option 1 - Choose defaults
 
 You can choose the *CommonMark Strict Mode*, which tells the render to follow the latest [CommonMark] spec.
@@ -56,11 +58,17 @@ markdown:
   html: true
   xhtmlOut: false
   breaks: false
-  langPrefix: ''
   linkify: true
   typographer: true
   quotes: '“”‘’'
 ```
+
+- **html:** `true || false` If true, the renderer will allow HTML tags inside markdown documents be passed to the resulting document.
+- **xhtmlOut:** `true || false` If true, the renderer will export XHTML compatible tags (`<br />` instead of `<br>`). This feature exists only there to ensure [CommonMark] compliance.
+- **breaks:** `true || false` Line breaks in the source file will be parsed into `<br>` tags.
+- **linkify:** `true || false` Parser returns proper links from links inline with the text.
+- **typographer:** `true || false` Enables substitution for common typography elements like &copy; and curly quotes.
+- **quotes:** Option that defines the double and single quotes used for substituting dumb quotes if typographer is set to `true`.
 
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
