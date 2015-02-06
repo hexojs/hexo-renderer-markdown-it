@@ -1,3 +1,5 @@
+'use strict';
+
 var renderer = require('./lib/renderer');
 var assign = require('object-assign');
 
