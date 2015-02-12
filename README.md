@@ -1,5 +1,7 @@
 # hexo-renderer-markdown-it
 
+[![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it)
+
 Add support for [Markdown] and [CommonMark]. This plugin uses [Markdown-it] as a render engine on [Hexo].
 
 ## Installation
