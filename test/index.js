@@ -67,4 +67,40 @@ describe('Markdown-It Hexo Renderer', function(){
       ].join('\n') + ('\n'));
 
   });
+
+  it('Plugins', function(){
+    var ctx = {
+      config: {
+        markdown: {
+          plugins: [
+            'markdown-it-footnote',
+            'markdown-it-sub',
+            'markdown-it-sup'
+          ]
+        }
+      }
+    };
+    var r = require('../lib/renderer').bind(ctx);
+    var footnote = [
+      'Test [^1]:',
+      '',
+      '[^1]: footnote'
+    ].join('\n');
+
+    r({text: footnote}).should.eql([
+      '<p>Test <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>:</p>',
+      '<hr class="footnotes-sep">',
+      '<section class="footnotes">',
+      '<ol class="footnotes-list">',
+      '<li id="fn1"  class="footnote-item"><p>footnote <a href="#fnref1" class="footnote-backref">↩</a></p>',
+      '</li>',
+      '</ol>',
+      '</section>',
+      ''
+    ].join('\n'));
+
+    r({text: '29^th^'}).should.eql('<p>29<sup>th</sup></p>\n');
+    r({text: 'H~2~O'} ).should.eql('<p>H<sub>2</sub>O</p>\n');
+
+  });
 });
