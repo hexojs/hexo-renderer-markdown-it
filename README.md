@@ -1,6 +1,6 @@
 # hexo-renderer-markdown-it
 
-[![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it)
+[![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it) [![npm version](https://badge.fury.io/js/hexo-renderer-markdown-it.svg)](http://badge.fury.io/js/hexo-renderer-markdown-it) [![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-markdown-it/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-markdown-it)
 
 Add support for [Markdown] and [CommonMark]. This plugin uses [Markdown-it] as a render engine on [Hexo].
 
