@@ -31,10 +31,10 @@
   "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
     "markdown-it": "^3.0.2",
-    "object-assign": "^2.0.0"
+    "object-assign": "^2.0.0",
     "markdown-it-footnote": "^0.1.0",
     "markdown-it-sub": "^0.1.0",
-    "markdown-it-sup": "^0.1.0",
+    "markdown-it-sup": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
