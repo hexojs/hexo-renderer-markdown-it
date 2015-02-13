@@ -1,7 +1,10 @@
-var should = require('chai').should();
-var util = require('hexo-util');
+var should  = require('chai').should();
+var util    = require('hexo-util');
+
 
 describe('Markdown-It Hexo Renderer', function(){
+
+  var render  = require('../lib/renderer')
 
   it('Default (GFM)', function(){
     var ctx = {
@@ -18,7 +21,7 @@ describe('Markdown-It Hexo Renderer', function(){
       }
     };
 
-    var r = require('../lib/renderer').bind(ctx);
+    var r = render.bind(ctx);
 
     var body = [
       'Hello',
@@ -41,7 +44,7 @@ describe('Markdown-It Hexo Renderer', function(){
       }
     };
 
-    var r = require('../lib/renderer').bind(ctx);
+    var r = render.bind(ctx);
 
     var body = [
       '# Hello',
@@ -80,7 +83,7 @@ describe('Markdown-It Hexo Renderer', function(){
         }
       }
     };
-    var r = require('../lib/renderer').bind(ctx);
+    var r = render.bind(ctx);
     var footnote = [
       'Test [^1]:',
       '',
