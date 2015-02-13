@@ -13,6 +13,9 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "directories": {
+    "lib": "./lib"
+  },
   "keywords": [
     "hexo",
     "renderer",
