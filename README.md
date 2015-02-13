@@ -72,6 +72,25 @@ markdown:
 - **typographer:** `true || false` Enables substitution for common typography elements like &copy; and curly quotes.
 - **quotes:** Option that defines the double and single quotes used for substituting dumb quotes if typographer is set to `true`.
 
+## Plugins
+As of now, there are three plugins available.
+
+- footnotes
+- sub
+- sup
+
+These can be enabled in the global `_config.yml` like so:
+``` yaml
+markdown:
+  plugins:
+    - markdown-it-footnote
+    - markdown-it-sub
+    - markdown-it-sup
+```
+
+## Requests
+If you have any requests please file an [issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
+
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
 [Markdown-it]: https://github.com/markdown-it/markdown-it
