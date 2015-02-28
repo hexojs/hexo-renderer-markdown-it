@@ -4,6 +4,12 @@
 
 Add support for [Markdown] and [CommonMark]. This plugin uses [Markdown-it] as a render engine on [Hexo].
 
+## Compatibility notice
+
+This renderer has only been tested with Hexo version 3.0.0, which is currently a Release Candidate.
+
+User [eephyne](https://github.com/eephyne) has reported that `hexo-renderer-markdown-it` is not compatible with Hexo 2.8.3.
+
 ## Installation
 In it's current version, [Hexo] with `hexo-renderer-marked` predefined as a markdown renderer.
 
