@@ -1,17 +1,6 @@
 'use strict';
 
 var renderer = require('./lib/renderer');
-var assign = require('object-assign');
-
-hexo.config.markdown = assign({
-  html: false,
-  xhtmlOut: false,
-  breaks: false,
-  langPrefix: '',
-  linkify: false,
-  typographer: false,
-  quotes: '“”‘’'
-}, hexo.config.markdown);
 
 hexo.extend.renderer.register('md', 'html', renderer, true);
 hexo.extend.renderer.register('markdown', 'html', renderer, true);
