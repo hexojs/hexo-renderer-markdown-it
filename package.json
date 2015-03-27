@@ -38,7 +38,7 @@
     "object-assign": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "^2.1.2",
+    "chai": "^2.2.0",
     "coveralls": "^2.11.2",
     "gulp": "^3.8.11",
     "gulp-istanbul": "^0.7.0",
