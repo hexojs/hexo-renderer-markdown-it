@@ -6,7 +6,7 @@ Add support for [Markdown] and [CommonMark]. This plugin uses [Markdown-it] as a
 
 ## Compatibility notice
 
-This renderer has only been tested with Hexo version 3.0.0, which is currently a Release Candidate.
+**BREAKING CHANGES CHECK DOCUMENTATION**
 
 User [eephyne](https://github.com/eephyne) has reported that `hexo-renderer-markdown-it` is not compatible with Hexo 2.8.3.
 
@@ -63,12 +63,13 @@ You have the option to pass a very specific configuration to the parser.
 # Markdown-it config
 ## Docs: https://www.npmjs.com/package/hexo-renderer-markdown-it
 markdown:
-  html: true
-  xhtmlOut: false
-  breaks: false
-  linkify: true
-  typographer: true
-  quotes: '“”‘’'
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: false
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
 ```
 
 - **html:** `true || false` If true, the renderer will allow HTML tags inside markdown documents be passed to the resulting document.
@@ -77,6 +78,21 @@ markdown:
 - **linkify:** `true || false` Parser returns proper links from links inline with the text.
 - **typographer:** `true || false` Enables substitution for common typography elements like &copy; and curly quotes.
 - **quotes:** Option that defines the double and single quotes used for substituting dumb quotes if typographer is set to `true`.
+
+## Header Anchors
+Just enabled them in the global `_config.yml` like so:
+
+``` yaml
+markdown:
+  anchors:
+    level: 1
+    slugify
+    permalink: false
+    permalinkClass: header-anchor
+    permalinkSymbol: ¶
+
+```
+
 
 ## Plugins
 As of now, there are three plugins available.
