@@ -1,10 +1,43 @@
-var should  = require('chai').should();
-var util    = require('hexo-util');
+'use strict';
 
+var should  = require('chai').should();
 
 describe('Markdown-It Hexo Renderer', function(){
 
   var render  = require('../lib/renderer');
+
+  it('Without Setup', function(){
+    var ctx = {
+      config:{
+        title: 'Something to test'
+      }
+    };
+
+    var r = render.bind(ctx);
+
+    var body = [
+      '# Hello',
+      'world',
+      '',
+      '| Option | Description |',
+      '| ------ | ----------- |',
+      '| data   | path to data files to supply the data that will be passed into templates. |',
+      '| engine | engine to be used for processing templates. Handlebars is the default. |',
+      '| ext    | extension to be used for dest files. |'
+    ].join('\n');
+
+    var result = r({text: body});
+
+    result.should.eql([
+        '<h1>Hello</h1>',
+        '<p>world</p>',
+        '<p>| Option | Description |',
+        '| ------ | ----------- |',
+        '| data   | path to data files to supply the data that will be passed into templates. |',
+        '| engine | engine to be used for processing templates. Handlebars is the default. |',
+        '| ext    | extension to be used for dest files. |</p>'
+      ].join('\n') + ('\n'));
+  });
 
   it('Default (GFM)', function(){
     var ctx = {

@@ -5,10 +5,15 @@
   "node": true,
   "trailing": true,
   "quotmark": "single",
+  "strict": true,
   "undef": true,
   "unused": "vars",
   "globals": {
     "Promise": true,
-    "hexo": true
+    "hexo": true,
+    "describe": true,
+    "should": true,
+    "require": true,
+    "it": true
   }
 }
