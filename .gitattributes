@@ -1,0 +1,12 @@
+# Auto detect text files and perform LF normalization
+*        text=auto
+
+*.cs     text diff=csharp
+*.java   text diff=java
+*.html   text diff=html
+*.css    text
+*.js     text
+
+
+# absolute paths are ok, as are globs
+test/**/* text eol=lf
