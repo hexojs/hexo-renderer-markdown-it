@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it) [![npm version](https://badge.fury.io/js/hexo-renderer-markdown-it.svg)](http://badge.fury.io/js/hexo-renderer-markdown-it) [![npm dependencies](https://david-dm.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://www.npmjs.com/package/hexo-renderer-markdown-it) [![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-markdown-it/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-markdown-it)
 
-This plugin uses [Markdown-it] as a render engine on [Hexo]. Adds support for [Markdown] and [CommonMark].
+This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds support for [Markdown] and [CommonMark].
 
 ## Documentation
 This `README` was getting too messy for my taste, so it was time to fire up the github wiki in the repo and [move the documentation over there](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki).
@@ -13,13 +13,22 @@ This `README` was getting too messy for my taste, so it was time to fire up the 
 - Faster than the default `hexo-renderer-marked`
 - Inline Anchors in Headings
 - Footnotes
-- Sub & Sup
+- <sub> & <sup>
+- <ins>
 
 ## Installation
-You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started)
+You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started).
 
-## Requests
-If you have any requests please file an [issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
+It's also the place to go if you want to know more about how `hexo-renderer-markdown-it` works.
+
+## Requests and bug reports
+If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
+
+## Changelog
+###3.1.0
+- Added support for <ins> tag
+- Refactored the renderer
+- Refactored the tests
 
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
