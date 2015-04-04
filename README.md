@@ -13,8 +13,8 @@ This `README` was getting too messy for my taste, so it was time to fire up the 
 - Faster than the default `hexo-renderer-marked`
 - Inline Anchors in Headings
 - Footnotes
-- <sub> & <sup>
-- <ins>
+- `<sub>` & `<sup>`
+- `<ins>`
 
 ## Installation
 You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started).
