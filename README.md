@@ -26,7 +26,7 @@ If you have any feature requests or bugs to report, [you're welcome to file an i
 
 ## Changelog
 ###3.1.0
-- Added support for <ins> tag
+- Added support for `<ins>` tag
 - Refactored the renderer
 - Refactored the tests
 
