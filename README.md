@@ -25,7 +25,7 @@ It's also the place to go if you want to know more about how `hexo-renderer-mark
 If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
 
 ## Changelog
-###3.1.0
+### 3.1.0
 - Added support for `<ins>` tag
 - Refactored the renderer
 - Refactored the tests
