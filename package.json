@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-markdown-it",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index",
   "scripts": {
