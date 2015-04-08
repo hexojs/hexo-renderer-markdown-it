@@ -15,7 +15,7 @@ gulp.task('coverage:clean', function(callback){
 gulp.task('mocha', ['coverage'], function(){
   return gulp.src('test/index.js')
     .pipe($.mocha({
-      reporter: 'progress',
+      reporter: 'spec',
       bail: true
     }))
     .pipe($.istanbul.writeReports());
