@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-markdown-it",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index",
   "scripts": {
@@ -30,12 +30,14 @@
   },
   "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
+    "lodash.assign": "^3.0.0",
     "markdown-it": "^4.1.0",
     "markdown-it-anchor": "^1.0.0",
     "markdown-it-footnote": "^1.0.0",
     "markdown-it-ins": "^1.0.0",
     "markdown-it-sub": "^1.0.0",
-    "markdown-it-sup": "^1.0.0"
+    "markdown-it-sup": "^1.0.0",
+    "sluggo": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^2.2.0",
@@ -47,6 +49,6 @@
     "gulp-load-plugins": "^0.9.0",
     "gulp-mocha": "^2.0.1",
     "jshint-stylish": "^1.0.1",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.4"
   }
 }
