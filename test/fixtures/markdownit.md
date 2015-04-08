@@ -1,16 +1,20 @@
-# h1 Heading 8-)
-## h2 Heading
+# h1 Heading em português
+## h2 Heading :P
 ### h3 Heading
 #### h4 Heading
 ##### h5 Heading
 ###### h6 Heading
 
 
-## Horizontal Rules
+## Horizontal Rule
 
 ___
 
+## Horizontal Rule
+
 ---
+
+## Horizontal Rule
 
 ***
 
@@ -68,14 +72,6 @@ Ordered
 3. Integer molestie lorem at massa
 
 
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
 
 ## Code
 
@@ -126,8 +122,6 @@ Right aligned columns
 
 [link text](http://dev.nodeca.com)
 
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
 Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 
@@ -136,11 +130,7 @@ Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 ![Minion](https://octodex.github.com/images/minion.png)
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 
-Like links, Images also have a footnote style syntax
-
 ![Alt text][id]
-
-With a reference later in the document defining the URL location:
 
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
 
