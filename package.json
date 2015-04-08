@@ -32,7 +32,6 @@
   "dependencies": {
     "lodash.assign": "^3.0.0",
     "markdown-it": "^4.1.0",
-    "markdown-it-anchor": "^1.0.0",
     "markdown-it-footnote": "^1.0.0",
     "markdown-it-ins": "^1.0.0",
     "markdown-it-sub": "^1.0.0",
