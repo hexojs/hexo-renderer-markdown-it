@@ -8,13 +8,15 @@ This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds suppo
 This `README` was getting too messy for my taste, so it was time to fire up the github wiki in the repo and [move the documentation over there](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki).
 
 ## Main Features
-- [Markdown] and [CommonMark]
-- Fully configurable
-- Faster than the default `hexo-renderer-marked`
-- Inline Anchors in Headings
+- Support for [Markdown], [GFM] and [CommonMark]
+- Extensive configuration
+- Faster than the default renderer | `hexo-renderer-marked`
+- Safe ID for headings
+- Anchors for headings with ID
 - Footnotes
-- `<sub>` & `<sup>`
-- `<ins>`
+- `<sub>` H<sub>2</sub>O
+- `<sup>` x<sup>2</sup>
+- `<ins>` <ins>Inserted</ins>
 
 ## Installation
 You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started).
@@ -25,6 +27,11 @@ It's also the place to go if you want to know more about how `hexo-renderer-mark
 If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
 
 ## Changelog
+### 3.2.0
+- Integrated `markdown-it-anchors` and changed the slugify function
+- Implemented a way to prevent ID collisions in headings (using the heading line).
+- Remade the tests.
+
 ### 3.1.0
 - Added support for `<ins>` tag
 - Refactored the renderer
@@ -32,5 +39,6 @@ If you have any feature requests or bugs to report, [you're welcome to file an i
 
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
+[GFM]: https://help.github.com/articles/github-flavored-markdown/
 [Markdown-it]: https://github.com/markdown-it/markdown-it
 [Hexo]: http://hexo.io/
