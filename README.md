@@ -27,17 +27,15 @@ It's also the place to go if you want to know more about how `hexo-renderer-mark
 If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
 
 ## Changelog
+### 3.3.1
+- Fixed a bug with Anchors using `hexo-server`
+
 ### 3.3.0
 - Modified the ID collisions feature (reading the number of times the header repeats itself)
 - Added option `collisionSuffix` which allows a suffix to be passed after the heading ID slug.
 
 ### 3.2.1
 - Bugfixes
-
-### 3.2.0
-- Integrated `markdown-it-anchors` and changed the slugify function
-- Implemented a way to prevent ID collisions in headings (using the heading line)
-- Remade the tests
 
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
