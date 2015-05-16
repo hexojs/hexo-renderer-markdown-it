@@ -91,6 +91,47 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_custom);
   });
 
+  it('should handle a custom highlight function', function () {
+    var highlight = require('codemirror-highlight-node');
+    var parsed_highlight = fs.readFileSync('./test/fixtures/outputs/highlight.html', 'utf8');
+    var ctx = {
+      config: {
+        markdown: {
+          render: {
+            highlight: function (code, lang) { return highlight(code,lang); }
+          }
+        }
+      }
+    };
+    var source = fs.readFileSync('./test/fixtures/highlight.md', 'utf8');
+    var parse = render.bind(ctx);
+    var result = parse({
+      text: source
+    });
+    ctx = {};
+    result.should.equal(parsed_highlight);
+  });
+
+  it('should handle a custom highlight module', function () {
+    var parsed_highlight = fs.readFileSync('./test/fixtures/outputs/highlight.html', 'utf8');
+    var ctx = {
+      config: {
+        markdown: {
+          render: {
+            highlight: 'codemirror-highlight-node'
+          }
+        }
+      }
+    };
+    var source = fs.readFileSync('./test/fixtures/highlight.md', 'utf8');
+    var parse = render.bind(ctx);
+    var result = parse({
+      text: source
+    });
+    ctx = {};
+    result.should.equal(parsed_highlight);
+  });
+
   it('should render plugins if they are defined', function () {
     var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
     var ctx = {
