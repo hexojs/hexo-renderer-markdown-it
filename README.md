@@ -17,6 +17,7 @@ This `README` was getting too messy for my taste, so it was time to fire up the 
 - `<sub>` H<sub>2</sub>O
 - `<sup>` x<sup>2</sup>
 - `<ins>` <ins>Inserted</ins>
+- Server-side code hightlight
 
 ## Installation
 You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started).

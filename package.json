@@ -31,8 +31,9 @@
   "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
     "lodash.assign": "^3.1.0",
-    "markdown-it": "^4.1.1",
+    "markdown-it": "^4.2.2",
     "markdown-it-footnote": "^1.0.0",
+    "markdown-it-highlightjs": "^1.1.2",
     "markdown-it-ins": "^1.0.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
