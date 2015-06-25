@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
-    "lodash.assign": "^3.1.0",
-    "markdown-it": "^4.1.1",
+    "lodash.assign": "^3.2.0",
+    "markdown-it": "^4.2.2",
     "markdown-it-footnote": "^1.0.0",
     "markdown-it-ins": "^1.0.0",
     "markdown-it-sub": "^1.0.0",
@@ -39,15 +39,15 @@
     "sluggo": "^0.2.0"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
+    "chai": "^3.0.0",
     "coveralls": "^2.11.2",
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-istanbul": "^0.8.1",
-    "gulp-jshint": "^1.10.0",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-mocha": "^2.0.1",
-    "jshint-stylish": "^1.0.1",
-    "mocha": "^2.2.4"
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-load-plugins": "^1.0.0-rc",
+    "gulp-mocha": "^2.1.2",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.2.5"
   }
 }
