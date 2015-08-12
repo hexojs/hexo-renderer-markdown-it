@@ -1,6 +1,8 @@
 # hexo-renderer-markdown-it
 
-[![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it) [![npm version](https://badge.fury.io/js/hexo-renderer-markdown-it.svg)](http://badge.fury.io/js/hexo-renderer-markdown-it) [![npm dependencies](https://david-dm.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://www.npmjs.com/package/hexo-renderer-markdown-it) [![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-markdown-it/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-markdown-it)
+[![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://travis-ci.org/celsomiranda/hexo-renderer-markdown-it)
+[![npm version](https://badge.fury.io/js/hexo-renderer-markdown-it.svg)](http://badge.fury.io/js/hexo-renderer-markdown-it) [![npm dependencies](https://david-dm.org/celsomiranda/hexo-renderer-markdown-it.svg)](https://www.npmjs.com/package/hexo-renderer-markdown-it)
+[![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-markdown-it/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-markdown-it)
 
 This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds support for [Markdown] and [CommonMark].
 
@@ -26,16 +28,6 @@ It's also the place to go if you want to know more about how `hexo-renderer-mark
 ## Requests and bug reports
 If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
 
-## Changelog
-### 3.3.1
-- Fixed a bug with Anchors using `hexo-server`
-
-### 3.3.0
-- Modified the ID collisions feature (reading the number of times the header repeats itself)
-- Added option `collisionSuffix` which allows a suffix to be passed after the heading ID slug.
-
-### 3.2.1
-- Bugfixes
 
 [CommonMark]: http://commonmark.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
