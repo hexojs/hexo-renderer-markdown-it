@@ -105,7 +105,7 @@ describe('Hexo Renderer Markdown-it', function () {
             typographer: false,
             quotes: '«»“”'
           },
-          plugins: ['markdown-it-footnote', 'markdown-it-sub', 'markdown-it-sup', 'markdown-it-ins']
+          plugins: ['markdown-it-footnote', 'markdown-it-sub', 'markdown-it-sup', 'markdown-it-ins', 'markdown-it-abbr']
         }
       }
     };
