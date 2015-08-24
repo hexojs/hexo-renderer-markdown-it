@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "coveralls": "^2.11.3",
+    "coveralls": "^2.11.4",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
     "gulp-istanbul": "^0.10.0",
