@@ -31,10 +31,10 @@
   "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
   "dependencies": {
     "lodash.assign": "^3.2.0",
-    "markdown-it": "^4.4.0",
+    "markdown-it": "^5.0.1",
     "markdown-it-abbr": "^1.0.0",
-    "markdown-it-footnote": "^1.0.0",
-    "markdown-it-ins": "^1.0.0",
+    "markdown-it-footnote": "^2.0.0",
+    "markdown-it-ins": "^2.0.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "sluggo": "^0.2.0"
@@ -42,7 +42,7 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "coveralls": "^2.11.4",
-    "del": "^1.2.1",
+    "del": "^2.1.0",
     "gulp": "^3.9.0",
     "gulp-istanbul": "^0.10.0",
     "gulp-jshint": "^1.11.2",
