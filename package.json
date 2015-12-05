@@ -33,6 +33,7 @@
     "lodash.assign": "^3.2.0",
     "markdown-it": "^5.0.1",
     "markdown-it-abbr": "^1.0.0",
+    "markdown-it-classy": "^0.2.0",
     "markdown-it-footnote": "^2.0.0",
     "markdown-it-ins": "^2.0.0",
     "markdown-it-sub": "^1.0.0",

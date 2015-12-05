@@ -118,6 +118,20 @@ with lazy continuation.</p>
 <p>This is HTML abbreviation example.</p>
 <p>It converts &quot;HTML&quot;, but keep intact partial entries like &quot;xxxHTMLyyy&quot; and so on.</p>
 <p>*[HTML]: Hyper Text Markup Language</p>
+<p>### [CSS Classes](https://github.com/andrey-p/markdown-it-classy)</p>
+<p>#### All kinds of headings work! {classy_heading}</p>
+<p>_em {classy}_ and __strong {classy}__ are not supported!
+{classy_paragraph}</p>
+<p>- so
+- are {classy_item}
+- ul tags
+{classy_list}</p>
+<p>&gt; blockquotes?
+&gt; {classy_paragraph}
+&gt;
+&gt; why not!
+{classy_blockquote}</p>
+<p>So basically, if the class statement is after a newline, it gets applied to the outer element, and if it's inline, it's applied to the inner element.</p>
 <p>### [Custom containers](https://github.com/markdown-it/markdown-it-container)</p>
 <p>::: warning
 *here be dragons*

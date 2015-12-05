@@ -216,6 +216,28 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 *[HTML]: Hyper Text Markup Language
 
+
+### [CSS Classes](https://github.com/andrey-p/markdown-it-classy)
+
+#### All kinds of headings work! {classy_heading}
+
+_em {classy}_ and __strong {classy}__ are not supported!
+{classy_paragraph}
+
+- so
+- are {classy_item}
+- ul tags
+{classy_list}
+
+> blockquotes?
+> {classy_paragraph}
+>
+> why not!
+{classy_blockquote}
+
+So basically, if the class statement is after a newline, it gets applied to the outer element, and if it's inline, it's applied to the inner element.
+
+
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: warning
