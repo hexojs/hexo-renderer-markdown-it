@@ -118,6 +118,33 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_plugins);
   });
 
+  it('should render a plugin defined as an object', function () {
+    var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
+    var ctx = {
+      config: {
+        markdown: {
+          render: {
+            html: false,
+            xhtmlOut: false,
+            breaks: false,
+            langPrefix: 'language-',
+            linkify: false,
+            typographer: false,
+            quotes: '«»“”'
+          },
+          plugins: ['markdown-it-footnote', 'markdown-it-sub', 'markdown-it-sup', 'markdown-it-ins', { name: 'markdown-it-abbr' }]
+        }
+      }
+    };
+    var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+    var parse = render.bind(ctx);
+    var result = parse({
+      text: source
+    });
+    ctx = {};
+    result.should.equal(parsed_plugins);
+  });
+
   it('should render anchor-headers if they are defined', function () {
     var anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
     var ctx = {
