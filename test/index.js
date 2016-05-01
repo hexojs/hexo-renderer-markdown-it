@@ -188,4 +188,38 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(anchors_with_permalinks);
 
   });
+
+  it('should allow to disable a rule', function () {
+	var parsed_disabled = fs.readFileSync('./test/fixtures/outputs/disable-single.html', 'utf8');
+	var ctx = {
+	  config: {
+		markdown: {
+		  disable: 'strikethrough'
+		}
+	  }
+	};
+	var parse = render.bind(ctx);
+	var result = parse({
+	  text: source
+	});
+	ctx = {};
+	result.should.equal(parsed_disabled);
+  });
+
+  it('should allow to disable multiple rules', function () {
+	var parsed_disabled = fs.readFileSync('./test/fixtures/outputs/disable-multiple.html', 'utf8');
+	var ctx = {
+	  config: {
+		markdown: {
+		  disable: ['strikethrough', 'table', 'blockquote']
+		}
+	  }
+	};
+	var parse = render.bind(ctx);
+	var result = parse({
+	  text: source
+	});
+	ctx = {};
+	result.should.equal(parsed_disabled);
+  });
 });
