@@ -4,14 +4,11 @@
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index",
   "scripts": {
-    "test": "gulp test"
+    "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/celsomiranda/hexo-renderer-markdown-it.git"
-  },
-  "engines": {
-    "node": ">= 0.10.0"
+    "url": "git://github.com/hexojs/hexo-renderer-markdown-it.git"
   },
   "keywords": [
     "hexo",
@@ -21,20 +18,21 @@
     "hexo-renderer"
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
-  "license": {
-    "type": "MIT",
-    "url": "https://raw.github.com/celsomiranda/hexo-renderer-markdown-it/master/LICENSE"
-  },
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/celsomiranda/hexo-renderer-markdown-it/issues"
+    "url": "https://github.com/hexojs/hexo-renderer-markdown-it/issues"
   },
-  "homepage": "https://github.com/celsomiranda/hexo-renderer-markdown-it",
+  "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
   "dependencies": {
     "lodash.assign": "^4.2.0",
-    "markdown-it": "^8.3.1",
-    "markdown-it-abbr": "^1.0.0",
+    "markdown-it": "^8.4.0",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-deflist": "^2.0.3",
+    "markdown-it-emoji": "^1.4.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-ins": "^2.0.0",
+    "markdown-it-mark": "^2.0.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "sluggo": "^0.2.0"

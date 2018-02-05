@@ -105,7 +105,17 @@ describe('Hexo Renderer Markdown-it', function () {
             typographer: false,
             quotes: '«»“”'
           },
-          plugins: ['markdown-it-footnote', 'markdown-it-sub', 'markdown-it-sup', 'markdown-it-ins', 'markdown-it-abbr']
+          plugins: [
+            'markdown-it-abbr',
+            'markdown-it-container',
+            'markdown-it-deflist',
+            'markdown-it-emoji',
+            'markdown-it-footnote',
+            'markdown-it-ins',
+            'markdown-it-mark',
+            'markdown-it-sub',
+            'markdown-it-sup'
+          ]
         }
       }
     };
@@ -132,7 +142,17 @@ describe('Hexo Renderer Markdown-it', function () {
             typographer: false,
             quotes: '«»“”'
           },
-          plugins: ['markdown-it-footnote', 'markdown-it-sub', 'markdown-it-sup', 'markdown-it-ins', { name: 'markdown-it-abbr' }]
+          plugins: [
+            'markdown-it-abbr',
+            'markdown-it-container',
+            'markdown-it-deflist',
+            'markdown-it-emoji',
+            'markdown-it-footnote',
+            'markdown-it-ins',
+            'markdown-it-mark',
+            'markdown-it-sub',
+            'markdown-it-sup'
+          ]
         }
       }
     };
