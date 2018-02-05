@@ -7,7 +7,7 @@
 This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds support for [Markdown] and [CommonMark].
 
 ## Documentation
-This `README` was getting too messy for my taste, so it was time to fire up the github wiki in the repo and [move the documentation over there](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki).
+This `README` was getting too messy for my taste, so it was time to fire up the github wiki in the repo and [move the documentation over there](https://github.com/hexojs/hexo-renderer-markdown-it/wiki).
 
 ## Main Features
 - Support for [Markdown], [GFM] and [CommonMark]
@@ -21,12 +21,12 @@ This `README` was getting too messy for my taste, so it was time to fire up the 
 - `<ins>` <ins>Inserted</ins>
 
 ## Installation
-You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/Getting-Started).
+You can install `hexo-renderer-markdown-it` by following [these steps in the documentation](https://github.com/hexojs/hexo-renderer-markdown-it/wiki/Getting-Started).
 
 It's also the place to go if you want to know more about how `hexo-renderer-markdown-it` works.
 
 ## Requests and bug reports
-If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/celsomiranda/hexo-renderer-markdown-it/issues).
+If you have any feature requests or bugs to report, [you're welcome to file an issue](https://github.com/hexojs/hexo-renderer-markdown-it/issues).
 
 
 [CommonMark]: http://commonmark.org/
