@@ -1,5 +1,5 @@
 <h1>h1 Heading em português</h1>
-<h2>h2 Heading :P</h2>
+<h2>h2 Heading 😛</h2>
 <h3>h3 Heading</h3>
 <h4>h4 Heading</h4>
 <h5>h5 Heading</h5>
@@ -135,8 +135,8 @@ console.log(foo(5));
 <a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin">syntax plugins</a>.</p>
 <h3><a href="https://github.com/markdown-it/markdown-it-emoji">Emojies</a></h3>
 <blockquote>
-<p>Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:</p>
-<p>Shortcuts (emoticons): :-) :-( 8-) ;)</p>
+<p>Classic markup: 😉 :crush: 😢 :tear: 😆 😋</p>
+<p>Shortcuts (emoticons): 😃 😦 😎 😉</p>
 </blockquote>
 <p>see <a href="https://github.com/markdown-it/markdown-it-emoji#change-output">how to change output</a> with twemoji.</p>
 <h3><a href="https://github.com/markdown-it/markdown-it-sub">Subscipt</a> / <a href="https://github.com/markdown-it/markdown-it-sup">Superscirpt</a></h3>
@@ -147,28 +147,35 @@ console.log(foo(5));
 <h3><a href="https://github.com/markdown-it/markdown-it-ins">&lt;ins&gt;</a></h3>
 <p><ins>Inserted text</ins></p>
 <h3><a href="https://github.com/markdown-it/markdown-it-mark">&lt;mark&gt;</a></h3>
-<p>==Marked text==</p>
+<p><mark>Marked text</mark></p>
 <h3><a href="https://github.com/markdown-it/markdown-it-footnote">Footnotes</a></h3>
 <p>Footnote 1 link<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
 <p>Footnote 2 link<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p>
 <p>Inline footnote<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> definition.</p>
-<p>Duplicated footnote reference<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2]</a></sup>.</p>
+<p>Duplicated footnote reference<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>.</p>
 <h3><a href="https://github.com/markdown-it/markdown-it-deflist">Definition lists</a></h3>
-<p>Term 1</p>
-<p>:   Definition 1
+<dl>
+<dt>Term 1</dt>
+<dd>
+<p>Definition 1
 with lazy continuation.</p>
-<p>Term 2 with <em>inline markup</em></p>
-<p>:   Definition 2</p>
-<pre><code>    { some code, part of Definition 2 }
-
-Third paragraph of definition 2.
+</dd>
+<dt>Term 2 with <em>inline markup</em></dt>
+<dd>
+<p>Definition 2</p>
+<pre><code>  { some code, part of Definition 2 }
 </code></pre>
+<p>Third paragraph of definition 2.</p>
+</dd>
+</dl>
 <p><em>Compact style:</em></p>
-<p>Term 1
-~ Definition 1</p>
-<p>Term 2
-~ Definition 2a
-~ Definition 2b</p>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a</dd>
+<dd>Definition 2b</dd>
+</dl>
 <h3><a href="https://github.com/markdown-it/markdown-it-abbr">Abbreviations</a></h3>
 <p>This is <abbr title="Hyper Text Markup Language">HTML</abbr> abbreviation example.</p>
 <p>It converts &quot;<abbr title="Hyper Text Markup Language">HTML</abbr>&quot;, but keep intact partial entries like &quot;xxxHTMLyyy&quot; and so on.</p>
@@ -179,12 +186,12 @@ Third paragraph of definition 2.
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1"  class="footnote-item"><p>Footnote <strong>can have markup</strong></p>
-<p>and multiple paragraphs. <a href="#fnref1" class="footnote-backref">↩</a></p>
+<li id="fn1" class="footnote-item"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2"  class="footnote-item"><p>Footnote text. <a href="#fnref2" class="footnote-backref">↩</a> <a href="#fnref2:1" class="footnote-backref">↩</a></p>
+<li id="fn2" class="footnote-item"><p>Footnote text. <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3"  class="footnote-item"><p>Text of inline footnote <a href="#fnref3" class="footnote-backref">↩</a></p>
+<li id="fn3" class="footnote-item"><p>Text of inline footnote <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
