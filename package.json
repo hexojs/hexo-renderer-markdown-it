@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
   "dependencies": {
-    "lodash.assign": "^4.2.0",
     "markdown-it": "^8.4.2",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-cjk-breaks": "^1.1.2",
