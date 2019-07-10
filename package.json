@@ -19,6 +19,9 @@
     "markdown-it",
     "hexo-renderer"
   ],
+  "files": [
+    "lib/"
+  ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
   "license": "MIT",
   "bugs": {
