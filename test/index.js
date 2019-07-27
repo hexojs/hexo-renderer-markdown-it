@@ -5,9 +5,9 @@ var chai = require('chai');
 var should = chai.should();
 var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
 
-describe('Hexo Renderer Markdown-it', function () {
+describe('Hexo Renderer Markdown-it', function() {
 
-  it('should render GFM if no config provided', function () {
+  it('should render GFM if no config provided', function() {
     var parsed_without_config = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
     var ctx = {
       config: {}
@@ -20,7 +20,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_without_config);
   });
 
-  it('should render CommonMark if config is \'commonmark\'', function () {
+  it('should render CommonMark if config is \'commonmark\'', function() {
     var parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
     var ctx = {
       config: {
@@ -35,7 +35,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_commonmark);
   });
 
-  it('should render a limited subset of Markdown if using \'zero\'', function () {
+  it('should render a limited subset of Markdown if using \'zero\'', function() {
     var parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
     var ctx = {
       config: {
@@ -50,7 +50,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_zero);
   });
 
-  it('should render something very close to GFM with \'default\'', function () {
+  it('should render something very close to GFM with \'default\'', function() {
     var parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
     var ctx = {
       config: {
@@ -65,7 +65,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_gfm);
   });
 
-  it('should handle a custom configuration', function () {
+  it('should handle a custom configuration', function() {
     var parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
     var ctx = {
       config: {
@@ -91,7 +91,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_custom);
   });
 
-  it('should render plugins if they are defined', function () {
+  it('should render plugins if they are defined', function() {
     var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
     var ctx = {
       config: {
@@ -128,7 +128,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_plugins);
   });
 
-  it('should render a plugin defined as an object', function () {
+  it('should render a plugin defined as an object', function() {
     var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
     var ctx = {
       config: {
@@ -165,7 +165,7 @@ describe('Hexo Renderer Markdown-it', function () {
     result.should.equal(parsed_plugins);
   });
 
-  it('should render anchor-headers if they are defined', function () {
+  it('should render anchor-headers if they are defined', function() {
     var anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
     var ctx = {
       config: {

@@ -4,7 +4,9 @@
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index",
   "scripts": {
-    "test": "./node_modules/.bin/gulp test"
+    "eslint": "eslint .",
+    "test": "mocha test/index.js",
+    "test-cov": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -39,16 +41,10 @@
   },
   "devDependencies": {
     "chai": "^4.0.0",
-    "coveralls": "^3.0.2",
-    "del": "^4.0.0",
-    "gulp": "^3.9.0",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-jshint": "^2.0.4",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^6.0.0",
-    "jshint-stylish": "^2.0.1",
-    "jshint": "^2.0.0",
-    "mocha": "^6.0.2"
+    "eslint": "^6.0.1",
+    "eslint-config-hexo": "^3.0.0",
+    "mocha": "^6.0.2",
+    "nyc": "^14.1.1"
   },
   "engines": {
     "node": ">=8.6.0"
