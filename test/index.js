@@ -1,8 +1,7 @@
 'use strict';
 var fs = require('fs');
 var render = require('../lib/renderer');
-var chai = require('chai');
-var should = chai.should();
+var should = require('chai').should(); // eslint-disable-line
 var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
 
 describe('Hexo Renderer Markdown-it', function() {
