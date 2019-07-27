@@ -1,12 +1,20 @@
 language: node_js
 
+sudo: false
+
+cache: npm
+
 node_js:
   - "8"
   - "10"
   - "node"
 
 script:
-  - npm test
+  - npm run eslint
+  - npm run test-cov
 
 after_script:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm install coveralls
+  - nyc report --reporter=text-lcov | coveralls
+
+dist: bionic
