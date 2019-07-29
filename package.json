@@ -2,7 +2,7 @@
   "name": "hexo-renderer-markdown-it",
   "version": "3.4.2",
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
-  "main": "index",
+  "main": "index.js",
   "scripts": {
     "eslint": "eslint .",
     "test": "mocha test/index.js",
@@ -19,7 +19,11 @@
     "markdown-it",
     "hexo-renderer"
   ],
+  "directories": {
+    "lib": "./lib"
+  },
   "files": [
+    "index.js",
     "lib/"
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
