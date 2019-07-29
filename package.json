@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
   "dependencies": {
-    "markdown-it": "^8.4.2",
+    "markdown-it": "^9.0.1",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-cjk-breaks": "^1.1.2",
     "markdown-it-container": "^2.0.0",
