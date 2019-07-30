@@ -2,7 +2,7 @@
 
 'use strict';
 
-var renderer = require('./lib/renderer');
+const renderer = require('./lib/renderer');
 
 hexo.extend.renderer.register('md', 'html', renderer, true);
 hexo.extend.renderer.register('markdown', 'html', renderer, true);
