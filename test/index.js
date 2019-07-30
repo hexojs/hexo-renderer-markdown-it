@@ -1,72 +1,72 @@
 'use strict';
-var fs = require('fs');
-var render = require('../lib/renderer');
-var should = require('chai').should(); // eslint-disable-line
-var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+const fs = require('fs');
+const render = require('../lib/renderer');
+const should = require('chai').should(); // eslint-disable-line
+const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
 
-describe('Hexo Renderer Markdown-it', function() {
+describe('Hexo Renderer Markdown-it', () => {
 
-  it('should render GFM if no config provided', function() {
-    var parsed_without_config = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
-    var ctx = {
+  it('should render GFM if no config provided', () => {
+    const parsed_without_config = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
+    let ctx = {
       config: {}
     };
-    var parse = render.bind(ctx);
-    var result = parse({
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_without_config);
   });
 
-  it('should render CommonMark if config is \'commonmark\'', function() {
-    var parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
-    var ctx = {
+  it('should render CommonMark if config is \'commonmark\'', () => {
+    const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
+    let ctx = {
       config: {
         markdown: 'commonmark'
       }
     };
-    var parse = render.bind(ctx);
-    var result = parse({
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_commonmark);
   });
 
-  it('should render a limited subset of Markdown if using \'zero\'', function() {
-    var parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
-    var ctx = {
+  it('should render a limited subset of Markdown if using \'zero\'', () => {
+    const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
+    let ctx = {
       config: {
         markdown: 'zero'
       }
     };
-    var parse = render.bind(ctx);
-    var result = parse({
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_zero);
   });
 
-  it('should render something very close to GFM with \'default\'', function() {
-    var parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
-    var ctx = {
+  it('should render something very close to GFM with \'default\'', () => {
+    const parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
+    let ctx = {
       config: {
         markdown: 'default'
       }
     };
-    var parse = render.bind(ctx);
-    var result = parse({
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_gfm);
   });
 
-  it('should handle a custom configuration', function() {
-    var parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
-    var ctx = {
+  it('should handle a custom configuration', () => {
+    const parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
+    let ctx = {
       config: {
         markdown: {
           render: {
@@ -81,18 +81,18 @@ describe('Hexo Renderer Markdown-it', function() {
         }
       }
     };
-    var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
-    var parse = render.bind(ctx);
-    var result = parse({
+    const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_custom);
   });
 
-  it('should render plugins if they are defined', function() {
-    var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
-    var ctx = {
+  it('should render plugins if they are defined', () => {
+    const parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
+    let ctx = {
       config: {
         markdown: {
           render: {
@@ -118,18 +118,18 @@ describe('Hexo Renderer Markdown-it', function() {
         }
       }
     };
-    var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
-    var parse = render.bind(ctx);
-    var result = parse({
+    const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_plugins);
   });
 
-  it('should render a plugin defined as an object', function() {
-    var parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
-    var ctx = {
+  it('should render a plugin defined as an object', () => {
+    const parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
+    let ctx = {
       config: {
         markdown: {
           render: {
@@ -155,18 +155,18 @@ describe('Hexo Renderer Markdown-it', function() {
         }
       }
     };
-    var source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
-    var parse = render.bind(ctx);
-    var result = parse({
+    const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
     result.should.equal(parsed_plugins);
   });
 
-  it('should render anchor-headers if they are defined', function() {
-    var anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
-    var ctx = {
+  it('should render anchor-headers if they are defined', () => {
+    const anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
+    let ctx = {
       config: {
         markdown: {
           anchors: {
@@ -179,8 +179,8 @@ describe('Hexo Renderer Markdown-it', function() {
         }
       }
     };
-    var parse = render.bind(ctx);
-    var result = parse({
+    const parse = render.bind(ctx);
+    const result = parse({
       text: source
     });
     ctx = {};
@@ -196,9 +196,9 @@ describe('Hexo Renderer Markdown-it', function() {
         }
       }
     };
-    var anchorsNoPerm = '<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n';
-    var anchorsNoPerm_parse = render.bind(ctx);
-    var anchorsNoPerm_result = anchorsNoPerm_parse({
+    const anchorsNoPerm = '<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n';
+    const anchorsNoPerm_parse = render.bind(ctx);
+    const anchorsNoPerm_result = anchorsNoPerm_parse({
       text: '# This is an H1 title\n# This is an H1 title'
     });
     ctx = {};
