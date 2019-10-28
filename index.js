@@ -2,6 +2,21 @@
 
 'use strict';
 
+hexo.config.markdown = Object.assign({
+  render: {
+    html: true,
+    xhtmlOut: false,
+    breaks: false,
+    linkify: true,
+    typographer: true,
+    quotes: '“”‘’'
+  },
+  anchors: {
+    level: 2,
+    collisionSuffix: 'v'
+  }
+}, hexo.config.markdown);
+
 const renderer = require('./lib/renderer');
 
 hexo.extend.renderer.register('md', 'html', renderer, true);
