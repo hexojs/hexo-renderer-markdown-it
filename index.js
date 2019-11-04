@@ -6,7 +6,7 @@ hexo.config.markdown = Object.assign({
   render: {
     html: true,
     xhtmlOut: false,
-    breaks: false,
+    breaks: true,
     linkify: true,
     typographer: true,
     quotes: '“”‘’'
