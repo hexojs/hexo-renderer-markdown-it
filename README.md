@@ -35,7 +35,7 @@ markdown:
   plugins:
   anchors:
     level: 2
-    collisionSuffix: 'v'
+    collisionSuffix: ''
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.

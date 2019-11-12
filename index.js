@@ -13,7 +13,7 @@ hexo.config.markdown = Object.assign({
   },
   anchors: {
     level: 2,
-    collisionSuffix: 'v'
+    collisionSuffix: ''
   }
 }, hexo.config.markdown);
 
