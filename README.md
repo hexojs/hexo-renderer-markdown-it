@@ -36,6 +36,9 @@ markdown:
   anchors:
     level: 2
     collisionSuffix: ''
+    permalink: false,
+    permalinkClass: 'header-anchor'
+    permalinkSymbol: '¶'
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.
