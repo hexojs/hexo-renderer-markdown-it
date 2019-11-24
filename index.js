@@ -2,6 +2,11 @@
 
 'use strict';
 
+hexo.config.markdown = Object.assign({
+  render: {},
+  anchors: {}
+}, hexo.config.markdown);
+
 hexo.config.markdown.render = Object.assign({
   html: true,
   xhtmlOut: false,
