@@ -13,6 +13,7 @@ This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds suppo
 - Faster than the default renderer | `hexo-renderer-marked`
 - Safe ID for headings
 - Anchors for headings with ID
+  - Multi-languages Supported
 - Footnotes
 - `<sub>` H<sub>2</sub>O
 - `<sup>` x<sup>2</sup>
@@ -36,6 +37,22 @@ markdown:
   anchors:
     level: 2
     collisionSuffix: ''
+    # replacement String to replace whitespace with, defaults to `-` (provides API compatibility with the `slug` module)
+    replacement:  '-'
+    # separator String, equivalent to `replacement` (provides API compatibility with the `speakingurl` module)
+    # separator:  '-'
+    # lang String, ISO 639-1 two-letter language code, defaults to auto-detected language
+    #lang: 'de'
+    # tone Boolean, add tone numbers to Pinyin transliteration of Chinese, defaults to `true`
+    tone: true
+    # separateNumbers Boolean, separate numbers that are within a word, defaults to `false`
+    separateNumbers: false
+    # maintainCase Boolean, maintain the original string's casing, defaults to `false`
+    maintainCase: false
+    #custom
+    #  - Object, custom map for translation, overwrites all i.e. `{ '&': '#', '*': ' star ' }`
+    #  - Array, add chars to allowed charMap
+    #custom:
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.

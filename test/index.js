@@ -207,4 +207,24 @@ describe('Hexo Renderer Markdown-it', () => {
     result.should.equal(anchors_with_permalinks);
 
   });
+  it('should render anchor with multi-languages correctly', () => {
+    const ctx = {
+      config: {
+        markdown: {
+          anchors: {
+            level: 1,
+            permalink: false,
+            permalinkClass: 'header-anchor',
+            permalinkSymbol: '¶'
+          }
+        }
+      }
+    };
+    let expected = '<h1 id="zhe4-shi4-h1-biao1-ti2">这是H1标题</h1>\n<h1 id="ich-love-deutsch">Ich ♥ Deutsch</h1>\n<h1 id="ya-lyublyu-russkii">Я люблю русский</h1>\n<h1 id="ha-hiragana-gaki">私は ひらがな が大好き</h1>\n';
+    const parse = render.bind(ctx);
+    let result = parse({
+      text: '# 这是H1标题\n# Ich ♥ Deutsch\n# Я люблю русский\n# 私は ひらがな が大好き'
+    });
+    result.should.equal(expected);
+  });
 });
