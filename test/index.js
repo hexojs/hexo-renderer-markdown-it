@@ -189,6 +189,7 @@ describe('Hexo Renderer Markdown-it', () => {
         markdown: {
           anchors: {
             level: 1,
+            collisionSuffix: '',
             permalink: false,
             permalinkClass: 'header-anchor',
             permalinkSymbol: '¶'
@@ -196,7 +197,7 @@ describe('Hexo Renderer Markdown-it', () => {
         }
       }
     };
-    const anchorsNoPerm = '<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n';
+    const anchorsNoPerm = '<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n<h1 id="this-is-an-h1-title-2">This is an H1 title</h1>\n';
     const anchorsNoPerm_parse = render.bind(ctx);
     const anchorsNoPerm_result = anchorsNoPerm_parse({
       text: '# This is an H1 title\n# This is an H1 title'

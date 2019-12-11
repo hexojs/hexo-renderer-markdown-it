@@ -37,6 +37,9 @@ markdown:
   anchors:
     level: 2
     collisionSuffix: ''
+    permalink: false,
+    permalinkClass: 'header-anchor'
+    permalinkSymbol: '¶'
     # replacement String to replace whitespace with, defaults to `-` (provides API compatibility with the `slug` module)
     replacement:  '-'
     # separator String, equivalent to `replacement` (provides API compatibility with the `speakingurl` module)

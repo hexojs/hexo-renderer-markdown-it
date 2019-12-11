@@ -3,19 +3,26 @@
 'use strict';
 
 hexo.config.markdown = Object.assign({
-  render: {
-    html: true,
-    xhtmlOut: false,
-    breaks: true,
-    linkify: true,
-    typographer: true,
-    quotes: '“”‘’'
-  },
-  anchors: {
-    level: 2,
-    collisionSuffix: ''
-  }
+  render: {},
+  anchors: {}
 }, hexo.config.markdown);
+
+hexo.config.markdown.render = Object.assign({
+  html: true,
+  xhtmlOut: false,
+  breaks: true,
+  linkify: true,
+  typographer: true,
+  quotes: '“”‘’'
+}, hexo.config.markdown.render);
+
+hexo.config.markdown.anchors = Object.assign({
+  level: 2,
+  collisionSuffix: '',
+  permalink: false,
+  permalinkClass: 'header-anchor',
+  permalinkSymbol: '¶'
+}, hexo.config.markdown.anchors);
 
 const renderer = require('./lib/renderer');
 
