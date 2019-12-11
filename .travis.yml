@@ -1,3 +1,7 @@
+os:
+  - linux
+  - windows
+
 language: node_js
 
 sudo: false
@@ -12,7 +16,9 @@ node_js:
   - "13"
 
 script:
-  - npm run eslint
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then
+      npm run eslint;
+    fi
   - npm run test-cov
 
 after_script:
