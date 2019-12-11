@@ -164,7 +164,7 @@ describe('Hexo Renderer Markdown-it', () => {
     result.should.equal(parsed_plugins);
   });
 
-  it('should render anchor-headers if they are defined', () => {
+  it('anchors - should render anchor-headers if they are defined', () => {
     const anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
     let ctx = {
       config: {
@@ -197,7 +197,7 @@ describe('Hexo Renderer Markdown-it', () => {
         }
       }
     };
-    const anchorsNoPerm = '<h1 id="this-is-an-h1-title">This is an H1 title</h1>\n<h1 id="this-is-an-h1-title-2">This is an H1 title</h1>\n';
+    const anchorsNoPerm = '<h1 id="This-is-an-H1-title">This is an H1 title</h1>\n<h1 id="This-is-an-H1-title-2">This is an H1 title</h1>\n';
     const anchorsNoPerm_parse = render.bind(ctx);
     const anchorsNoPerm_result = anchorsNoPerm_parse({
       text: '# This is an H1 title\n# This is an H1 title'
@@ -206,6 +206,24 @@ describe('Hexo Renderer Markdown-it', () => {
 
     anchorsNoPerm_result.should.equal(anchorsNoPerm);
     result.should.equal(anchors_with_permalinks);
+  });
 
+  it('anchors - should parse options correctly', () => {
+    const ctx = {
+      config: {
+        markdown: {
+          anchors: {
+            level: 2,
+            case: 1,
+            separator: '_'
+          }
+        }
+      }
+    };
+    const parse = render.bind(ctx);
+    const result = parse({
+      text: '## foo BAR'
+    });
+    result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
   });
 });

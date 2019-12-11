@@ -39,6 +39,8 @@ markdown:
     permalink: false,
     permalinkClass: 'header-anchor'
     permalinkSymbol: '¶'
+    case: 0
+    separator: ''
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.

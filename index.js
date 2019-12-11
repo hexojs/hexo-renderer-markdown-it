@@ -21,7 +21,8 @@ hexo.config.markdown.anchors = Object.assign({
   collisionSuffix: '',
   permalink: false,
   permalinkClass: 'header-anchor',
-  permalinkSymbol: '¶'
+  permalinkSymbol: '¶',
+  case: 0
 }, hexo.config.markdown.anchors);
 
 const renderer = require('./lib/renderer');
