@@ -44,8 +44,7 @@
     "markdown-it-ins": "^3.0.0",
     "markdown-it-mark": "^3.0.0",
     "markdown-it-sub": "^1.0.0",
-    "markdown-it-sup": "^1.0.0",
-    "sluggo": "^0.2.0"
+    "markdown-it-sup": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^4.0.0",
