@@ -226,4 +226,35 @@ describe('Hexo Renderer Markdown-it', () => {
     });
     result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
   });
+
+  describe('anchors - permalinkSide', () => {
+    const ctx = {
+      config: {
+        markdown: {
+          anchors: {
+            level: 2,
+            permalink: true,
+            permalinkClass: 'anchor',
+            permalinkSide: 'left',
+            permalinkSymbol: '#'
+          }
+        }
+      }
+    };
+    const parse = render.bind(ctx);
+    const text = '## foo';
+
+    it('left', () => {
+      const result = parse({ text });
+
+      result.should.equal('<h2 id="foo"><a class="anchor" href="#foo">#</a>foo</h2>\n');
+    });
+
+    it('right', () => {
+      ctx.config.markdown.anchors.permalinkSide = 'right';
+      const result = parse({ text });
+
+      result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo">#</a></h2>\n');
+    });
+  });
 });

@@ -36,8 +36,9 @@ markdown:
   anchors:
     level: 2
     collisionSuffix: ''
-    permalink: false,
+    permalink: false
     permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
     permalinkSymbol: '¶'
     case: 0
     separator: ''

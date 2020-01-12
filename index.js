@@ -21,6 +21,7 @@ hexo.config.markdown.anchors = Object.assign({
   collisionSuffix: '',
   permalink: false,
   permalinkClass: 'header-anchor',
+  permalinkSide: 'left',
   permalinkSymbol: '¶',
   case: 0,
   separator: ''
