@@ -8,10 +8,7 @@
     "test": "mocha test/index.js",
     "test-cov": "nyc npm run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hexojs/hexo-renderer-markdown-it.git"
-  },
+  "repository": "hexojs/hexo-renderer-markdown-it",
   "keywords": [
     "hexo",
     "renderer",
@@ -28,9 +25,7 @@
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hexojs/hexo-renderer-markdown-it/issues"
-  },
+  "bugs": "https://github.com/hexojs/hexo-renderer-markdown-it/issues",
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
   "dependencies": {
     "hexo-util": "^1.7.0",
