@@ -28,7 +28,7 @@
   "bugs": "https://github.com/hexojs/hexo-renderer-markdown-it/issues",
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
   "dependencies": {
-    "hexo-util": "^1.7.0",
+    "hexo-util": "^2.0.0",
     "markdown-it": "^10.0.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-cjk-breaks": "^1.1.2",
