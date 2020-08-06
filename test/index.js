@@ -247,14 +247,14 @@ describe('Hexo Renderer Markdown-it', () => {
     it('left', () => {
       const result = parse({ text });
 
-      result.should.equal('<h2 id="foo"><a class="anchor" href="#foo">#</a>foo</h2>\n');
+      result.should.equal('<h2 id="foo"><a class="anchor" href="#foo" style="float: left">#</a>foo</h2>\n');
     });
 
     it('right', () => {
       ctx.config.markdown.anchors.permalinkSide = 'right';
       const result = parse({ text });
 
-      result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo">#</a></h2>\n');
+      result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo" style="float: none">#</a></h2>\n');
     });
   });
 });
