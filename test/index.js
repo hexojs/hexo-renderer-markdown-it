@@ -3,8 +3,10 @@ const fs = require('fs');
 const render = require('../lib/renderer');
 const should = require('chai').should(); // eslint-disable-line
 const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+const Hexo = require('hexo');
 
 describe('Hexo Renderer Markdown-it', () => {
+  const hexo = new Hexo(__dirname, {silent: true});
 
   it('should render GFM if no config provided', () => {
     const parsed_without_config = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
@@ -226,6 +228,35 @@ describe('Hexo Renderer Markdown-it', () => {
     });
     result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
   });
+
+  describe('execFilter', () => {
+    it('default', () => {
+      const ctx = Object.assign(hexo, {
+        config: {
+          markdown: {}
+        }
+      });
+
+      const parse = render.bind(ctx);
+      const result = parse({
+        text: '[foo](javascript:bar)'
+      });
+      result.should.equal('<p>[foo](javascript:bar)</p>\n');
+    });
+
+    it('enable unsafe link', () => {
+      hexo.extend.filter.register('markdown-it:renderer', md => {
+        md.validateLink = function() { return true; };
+      });
+
+      const parse = render.bind(hexo);
+      const result = parse({
+        text: '[foo](javascript:bar)'
+      });
+      result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
+    });
+  });
+
 
   describe('anchors - permalinkSide', () => {
     const ctx = {
