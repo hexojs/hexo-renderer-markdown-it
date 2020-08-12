@@ -46,6 +46,23 @@ markdown:
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.
 
+## Extensibility
+
+This plugin overrides some default behaviors of how markdown-it plugin renders the markdown into html, to integrate with the Hexo ecosystem. It is possible to override this plugin too, without resorting to forking the whole thing.
+
+For example, to enable [unsafe links](https://markdown-it.github.io/markdown-it/#MarkdownIt.prototype.validateLink) (which is disabled by default):
+
+``` js
+hexo.extend.filter.register('markdown-it:renderer', function(md) {
+  const { config } = this; // Skip this line if you don't need user config from _config.yml
+  md.validateLink = function() { return true; };
+});
+```
+
+Save the file in "scripts/" folder and run Hexo as usual.
+
+Refer to markdown-it [API documentation](https://markdown-it.github.io/markdown-it/#MarkdownIt).
+
 ## Requests and bug reports
 If you have any feature requests or bugs to report, you're welcome to [file an issue](https://github.com/hexojs/hexo-renderer-markdown-it/issues).
 
