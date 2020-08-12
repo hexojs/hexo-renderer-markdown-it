@@ -25,6 +25,7 @@ Follow the [installation guide](https://github.com/hexojs/hexo-renderer-markdown
 
 ``` yml
 markdown:
+  preset: 'default'
   render:
     html: true
     xhtmlOut: false

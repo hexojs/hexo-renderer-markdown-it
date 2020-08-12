@@ -3,6 +3,7 @@
 'use strict';
 
 hexo.config.markdown = Object.assign({
+  preset: 'default',
   render: {},
   anchors: {}
 }, hexo.config.markdown);
