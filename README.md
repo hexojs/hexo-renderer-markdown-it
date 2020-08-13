@@ -33,6 +33,8 @@ markdown:
     linkify: true
     typographer: true
     quotes: '“”‘’'
+  enable_rules:
+  disable_rules:
   plugins:
   anchors:
     level: 2

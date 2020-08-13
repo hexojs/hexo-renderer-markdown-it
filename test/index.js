@@ -161,6 +161,29 @@ describe('Hexo Renderer Markdown-it', () => {
     result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
   });
 
+  it('enable_rules', () => {
+    hexo.config.markdown.preset = 'zero';
+    hexo.config.markdown.enable_rules = ['link', 'image'];
+
+    const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
+    const result = parse({
+      text: source
+    });
+    result.should.equal(parsed_zero);
+  });
+
+  it('disable_rules', () => {
+    hexo.config.markdown.preset = 'default';
+    hexo.config.markdown.render.linkify = false;
+    hexo.config.markdown.disable_rules = 'link';
+
+    const parsed = fs.readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
+    const result = parse({
+      text: source
+    });
+    result.should.equal(parsed);
+  });
+
   describe('execFilter', () => {
     it('default', () => {
       const result = parse({
@@ -181,7 +204,6 @@ describe('Hexo Renderer Markdown-it', () => {
 
     });
   });
-
 
   describe('anchors - permalinkSide', () => {
     const text = '## foo';
