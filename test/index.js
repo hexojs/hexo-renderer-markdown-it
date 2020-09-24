@@ -243,7 +243,7 @@ describe('Hexo Renderer Markdown-it', () => {
     before(async () => {
       await hexo.init();
       hexo.extend.tag.register('lorem', loremFn);
-      hexo.extend.renderer.register('md', 'html', require('../lib/renderer'));
+      hexo.extend.renderer.register('md', 'html', require('../lib/renderer'), true);
     });
 
     beforeEach(() => { hexo.config.markdown = {}; });
@@ -256,7 +256,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('enable disableNunjucks', async () => {
       const renderer = hexo.render.renderer.get('md');
       renderer.disableNunjucks = true;
-      hexo.extend.renderer.register('md', 'html', renderer);
+      hexo.extend.renderer.register('md', 'html', renderer, true);
       const result = await hexo.post.render(null, { content: '**foo** {% lorem %}', engine });
       result.content.should.eql('<p><strong>foo</strong> {% lorem %}</p>\n');
     });
