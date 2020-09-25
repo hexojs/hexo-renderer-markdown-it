@@ -4,8 +4,6 @@ os:
 
 language: node_js
 
-sudo: false
-
 cache:
   npm: true
 
