@@ -24,6 +24,9 @@
     "lib/"
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
+  "maintainers": [
+    "Hexo Core Team (https://github.com/orgs/hexojs/teams/core)"
+  ],
   "license": "MIT",
   "bugs": "https://github.com/hexojs/hexo-renderer-markdown-it/issues",
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
