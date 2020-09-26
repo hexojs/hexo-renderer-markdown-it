@@ -25,7 +25,7 @@ hexo.config.markdown.anchors = Object.assign({
   permalinkSide: 'left',
   permalinkSymbol: '¶',
   case: 0,
-  separator: ''
+  separator: '-'
 }, hexo.config.markdown.anchors);
 
 const renderer = require('./lib/renderer');

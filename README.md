@@ -44,7 +44,7 @@ markdown:
     permalinkSide: 'left'
     permalinkSymbol: '¶'
     case: 0
-    separator: ''
+    separator: '-'
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.
