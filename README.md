@@ -29,6 +29,7 @@ markdown:
   render:
     html: true
     xhtmlOut: false
+    langPrefix: 'language-'
     breaks: true
     linkify: true
     typographer: true
