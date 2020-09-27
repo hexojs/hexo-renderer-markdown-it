@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-markdown-it",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,9 @@
     "lib/"
   ],
   "author": "Celso Miranda <contacto@celsomiranda.net> (http://celsomiranda.net/)",
+  "maintainers": [
+    "Hexo Core Team (https://github.com/orgs/hexojs/teams/core)"
+  ],
   "license": "MIT",
   "bugs": "https://github.com/hexojs/hexo-renderer-markdown-it/issues",
   "homepage": "https://github.com/hexojs/hexo-renderer-markdown-it",
@@ -50,6 +53,6 @@
     "nyc": "^15.0.0"
   },
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.13.0"
   }
 }

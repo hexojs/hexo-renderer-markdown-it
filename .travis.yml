@@ -4,15 +4,13 @@ os:
 
 language: node_js
 
-sudo: false
-
 cache:
   npm: true
 
 node_js:
   - "10"
   - "12"
-  - "node"
+  - "14"
 
 script:
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then
