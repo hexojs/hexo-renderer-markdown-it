@@ -1,9 +1,9 @@
 'use strict';
 
 require('chai').should();
-const fs = require('fs');
+const { readFileSync } = require('fs');
 const render = require('../lib/renderer');
-const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
 const Hexo = require('hexo');
 
 describe('Hexo Renderer Markdown-it', () => {
@@ -41,7 +41,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('default', () => {
       hexo.config.markdown.preset = 'default';
 
-      const parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
+      const parsed_gfm = readFileSync('./test/fixtures/outputs/default.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -51,7 +51,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('commonmark', () => {
       hexo.config.markdown.preset = 'commonmark';
 
-      const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
+      const parsed_commonmark = readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -62,7 +62,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('handle deprecated config', () => {
       hexo.config.markdown = 'commonmark';
 
-      const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark-deprecated.html', 'utf8');
+      const parsed_commonmark = readFileSync('./test/fixtures/outputs/commonmark-deprecated.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -72,7 +72,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('zero', () => {
       hexo.config.markdown.preset = 'zero';
 
-      const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
+      const parsed_zero = readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -92,8 +92,8 @@ describe('Hexo Renderer Markdown-it', () => {
         quotes: '«»“”'
       };
 
-      const parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
-      const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+      const parsed_custom = readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
+      const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
       const result = parse({
         text: source
       });
@@ -125,8 +125,8 @@ describe('Hexo Renderer Markdown-it', () => {
         'markdown-it-sup'
       ];
 
-      const parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
-      const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+      const parsed_plugins = readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
+      const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
       const result = parse({
         text: source
       });
@@ -160,7 +160,7 @@ describe('Hexo Renderer Markdown-it', () => {
         permalinkClass: 'header-anchor',
         permalinkSymbol: '¶'
       };
-      const expected = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
+      const expected = readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -234,7 +234,7 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.preset = 'zero';
       hexo.config.markdown.enable_rules = ['link', 'image'];
 
-      const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
+      const parsed_zero = readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
       const result = parse({
         text: source
       });
@@ -246,7 +246,7 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.render.linkify = false;
       hexo.config.markdown.disable_rules = 'link';
 
-      const parsed = fs.readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
+      const parsed = readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
       const result = parse({
         text: source
       });
