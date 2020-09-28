@@ -37,45 +37,47 @@ describe('Hexo Renderer Markdown-it', () => {
     hexo.config = JSON.parse(JSON.stringify(defaultCfg));
   });
 
-  it('should render CommonMark if config is \'commonmark\'', () => {
-    hexo.config.markdown.preset = 'commonmark';
+  describe('preset', () => {
+    it('default', () => {
+      hexo.config.markdown.preset = 'default';
 
-    const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_gfm);
     });
-    result.should.equal(parsed_commonmark);
-  });
 
-  // Deprecated
-  it('should handle deprecated config', () => {
-    hexo.config.markdown = 'commonmark';
+    it('commonmark', () => {
+      hexo.config.markdown.preset = 'commonmark';
 
-    const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark-deprecated.html', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_commonmark);
     });
-    result.should.equal(parsed_commonmark);
-  });
 
-  it('should render a limited subset of Markdown if using \'zero\'', () => {
-    hexo.config.markdown.preset = 'zero';
+    // Deprecated
+    it('handle deprecated config', () => {
+      hexo.config.markdown = 'commonmark';
 
-    const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_commonmark = fs.readFileSync('./test/fixtures/outputs/commonmark-deprecated.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_commonmark);
     });
-    result.should.equal(parsed_zero);
-  });
 
-  it('should render something very close to GFM with \'default\'', () => {
-    hexo.config.markdown.preset = 'default';
+    it('zero', () => {
+      hexo.config.markdown.preset = 'zero';
 
-    const parsed_gfm = fs.readFileSync('./test/fixtures/outputs/default.html', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_zero);
     });
-    result.should.equal(parsed_gfm);
   });
 
   describe('render options', () => {
@@ -149,69 +151,107 @@ describe('Hexo Renderer Markdown-it', () => {
     });
   });
 
-  it('anchors - should render anchor-headers if they are defined', () => {
-    hexo.config.markdown.anchors = {
-      level: 2,
-      collisionSuffix: 'ver',
-      permalink: true,
-      permalinkClass: 'header-anchor',
-      permalinkSymbol: '¶'
-    };
-    const anchors_with_permalinks = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
-    const result = parse({
-      text: source
+  describe('anchors', () => {
+    it('collisionSuffix & permalinkClass', () => {
+      hexo.config.markdown.anchors = {
+        level: 2,
+        collisionSuffix: 'ver',
+        permalink: true,
+        permalinkClass: 'header-anchor',
+        permalinkSymbol: '¶'
+      };
+      const expected = fs.readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+
+      result.should.eql(expected);
     });
 
-    hexo.config.markdown.anchors = {
-      level: 1,
-      collisionSuffix: '',
-      permalink: false,
-      permalinkClass: 'header-anchor',
-      permalinkSymbol: '¶'
-    };
-    const anchorsNoPerm = '<h1 id="This-is-an-H1-title">This is an H1 title</h1>\n<h1 id="This-is-an-H1-title-2">This is an H1 title</h1>\n';
-    const anchorsNoPerm_result = parse({
-      text: '# This is an H1 title\n# This is an H1 title'
+    it('permalink disabled', () => {
+      hexo.config.markdown.anchors = {
+        level: 1,
+        collisionSuffix: '',
+        permalink: false,
+        permalinkClass: 'header-anchor',
+        permalinkSymbol: '¶'
+      };
+      const result = parse({
+        text: '# This is an H1 title\n# This is an H1 title'
+      });
+      const expected = '<h1 id="This-is-an-H1-title">This is an H1 title</h1>\n<h1 id="This-is-an-H1-title-2">This is an H1 title</h1>\n';
+
+      result.should.eql(expected);
     });
 
-    anchorsNoPerm_result.should.equal(anchorsNoPerm);
-    result.should.equal(anchors_with_permalinks);
+    it('slugize - case & separator', () => {
+      hexo.config.markdown.anchors = {
+        level: 2,
+        case: 1,
+        separator: '_'
+      };
+
+      const result = parse({
+        text: '## foo BAR'
+      });
+
+      result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
+    });
+
+    describe('permalinkSide', () => {
+      const text = '## foo';
+
+      it('left', () => {
+        hexo.config.markdown.anchors = {
+          level: 2,
+          permalink: true,
+          permalinkClass: 'anchor',
+          permalinkSide: 'left',
+          permalinkSymbol: '#'
+        };
+        const result = parse({ text });
+
+        result.should.equal('<h2 id="foo"><a class="anchor" href="#foo">#</a>foo</h2>\n');
+      });
+
+      it('right', () => {
+        hexo.config.markdown.anchors = {
+          level: 2,
+          permalink: true,
+          permalinkClass: 'anchor',
+          permalinkSide: 'right',
+          permalinkSymbol: '#'
+        };
+        const result = parse({ text });
+
+        result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo">#</a></h2>\n');
+      });
+    });
   });
 
-  it('anchors - should parse options correctly', () => {
-    hexo.config.markdown.anchors = {
-      level: 2,
-      case: 1,
-      separator: '_'
-    };
+  describe('rules', () => {
+    it('enable_rules', () => {
+      hexo.config.markdown.preset = 'zero';
+      hexo.config.markdown.enable_rules = ['link', 'image'];
 
-    const result = parse({
-      text: '## foo BAR'
+      const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_zero);
     });
-    result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
-  });
 
-  it('enable_rules', () => {
-    hexo.config.markdown.preset = 'zero';
-    hexo.config.markdown.enable_rules = ['link', 'image'];
+    it('disable_rules', () => {
+      hexo.config.markdown.preset = 'default';
+      hexo.config.markdown.render.linkify = false;
+      hexo.config.markdown.disable_rules = 'link';
 
-    const parsed_zero = fs.readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
-    const result = parse({
-      text: source
+      const parsed = fs.readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed);
     });
-    result.should.equal(parsed_zero);
-  });
-
-  it('disable_rules', () => {
-    hexo.config.markdown.preset = 'default';
-    hexo.config.markdown.render.linkify = false;
-    hexo.config.markdown.disable_rules = 'link';
-
-    const parsed = fs.readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
-    const result = parse({
-      text: source
-    });
-    result.should.equal(parsed);
   });
 
   describe('execFilter', () => {
@@ -231,36 +271,6 @@ describe('Hexo Renderer Markdown-it', () => {
         text: '[foo](javascript:bar)'
       });
       result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
-    });
-  });
-
-  describe('anchors - permalinkSide', () => {
-    const text = '## foo';
-
-    it('left', () => {
-      hexo.config.markdown.anchors = {
-        level: 2,
-        permalink: true,
-        permalinkClass: 'anchor',
-        permalinkSide: 'left',
-        permalinkSymbol: '#'
-      };
-      const result = parse({ text });
-
-      result.should.equal('<h2 id="foo"><a class="anchor" href="#foo">#</a>foo</h2>\n');
-    });
-
-    it('right', () => {
-      hexo.config.markdown.anchors = {
-        level: 2,
-        permalink: true,
-        permalinkClass: 'anchor',
-        permalinkSide: 'right',
-        permalinkSymbol: '#'
-      };
-      const result = parse({ text });
-
-      result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo">#</a></h2>\n');
     });
   });
 
