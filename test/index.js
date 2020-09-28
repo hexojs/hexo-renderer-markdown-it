@@ -97,25 +97,44 @@ describe('Hexo Renderer Markdown-it', () => {
     result.should.equal(parsed_custom);
   });
 
-  it('should render plugins if they are defined', () => {
-    hexo.config.markdown.plugins = [
-      'markdown-it-abbr',
-      'markdown-it-container',
-      'markdown-it-deflist',
-      'markdown-it-emoji',
-      'markdown-it-footnote',
-      'markdown-it-ins',
-      'markdown-it-mark',
-      'markdown-it-sub',
-      'markdown-it-sup'
-    ];
+  describe('plugins', () => {
+    it('default', () => {
+      hexo.config.markdown.plugins = [
+        'markdown-it-abbr',
+        'markdown-it-container',
+        'markdown-it-deflist',
+        'markdown-it-emoji',
+        'markdown-it-footnote',
+        'markdown-it-ins',
+        'markdown-it-mark',
+        'markdown-it-sub',
+        'markdown-it-sup'
+      ];
 
-    const parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
-    const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_plugins = fs.readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
+      const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_plugins);
     });
-    result.should.equal(parsed_plugins);
+
+    it('custom options', () => {
+      hexo.config.markdown.plugins = [
+        {
+          name: 'markdown-it-emoji',
+          options: {
+            defs: {
+              smile: ':lorem:'
+            }
+          }
+        }
+      ];
+
+      const text = ':smile:';
+      const result = parse({ text });
+      result.should.equal('<p>:lorem:</p>\n');
+    });
   });
 
   it('anchors - should render anchor-headers if they are defined', () => {
