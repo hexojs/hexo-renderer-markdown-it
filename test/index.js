@@ -170,8 +170,7 @@ describe('Hexo Renderer Markdown-it', () => {
       permalinkSymbol: '¶'
     };
     const anchorsNoPerm = '<h1 id="This-is-an-H1-title">This is an H1 title</h1>\n<h1 id="This-is-an-H1-title-2">This is an H1 title</h1>\n';
-    const anchorsNoPerm_parse = render.bind(hexo);
-    const anchorsNoPerm_result = anchorsNoPerm_parse({
+    const anchorsNoPerm_result = parse({
       text: '# This is an H1 title\n# This is an H1 title'
     });
 
@@ -232,7 +231,6 @@ describe('Hexo Renderer Markdown-it', () => {
         text: '[foo](javascript:bar)'
       });
       result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
-
     });
   });
 
