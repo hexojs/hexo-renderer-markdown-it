@@ -78,23 +78,35 @@ describe('Hexo Renderer Markdown-it', () => {
     result.should.equal(parsed_gfm);
   });
 
-  it('should handle a custom configuration', () => {
-    hexo.config.markdown.render = {
-      html: false,
-      xhtmlOut: true,
-      breaks: true,
-      langPrefix: '',
-      linkify: true,
-      typographer: true,
-      quotes: '«»“”'
-    };
+  describe('render options', () => {
+    it('custom options', () => {
+      hexo.config.markdown.render = {
+        html: false,
+        xhtmlOut: true,
+        breaks: true,
+        langPrefix: '',
+        linkify: true,
+        typographer: true,
+        quotes: '«»“”'
+      };
 
-    const parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
-    const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
-    const result = parse({
-      text: source
+      const parsed_custom = fs.readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
+      const source = fs.readFileSync('./test/fixtures/markdownit.md', 'utf8');
+      const result = parse({
+        text: source
+      });
+      result.should.equal(parsed_custom);
     });
-    result.should.equal(parsed_custom);
+
+    it('langPrefix', () => {
+      hexo.config.markdown.render = {
+        langPrefix: 'lang-'
+      };
+
+      const text = '```js\nexample\n```';
+      const result = parse({ text });
+      result.should.eql('<pre><code class="lang-js">example\n</code></pre>\n');
+    });
   });
 
   describe('plugins', () => {
