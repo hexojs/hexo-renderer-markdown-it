@@ -28,14 +28,19 @@ hexo.config.markdown.anchors = Object.assign({
   separator: '-'
 }, hexo.config.markdown.anchors);
 
-const renderer = require('./lib/renderer');
+const Renderer = require('./lib/renderer');
+const renderer = new Renderer(hexo);
 
 renderer.disableNunjucks = Boolean(hexo.config.markdown.disableNunjucks);
 
-hexo.extend.renderer.register('md', 'html', renderer, true);
-hexo.extend.renderer.register('markdown', 'html', renderer, true);
-hexo.extend.renderer.register('mkd', 'html', renderer, true);
-hexo.extend.renderer.register('mkdn', 'html', renderer, true);
-hexo.extend.renderer.register('mdwn', 'html', renderer, true);
-hexo.extend.renderer.register('mdtxt', 'html', renderer, true);
-hexo.extend.renderer.register('mdtext', 'html', renderer, true);
+function render(data, options) {
+  return renderer.parser.render(data.text);
+}
+
+hexo.extend.renderer.register('md', 'html', render, true);
+hexo.extend.renderer.register('markdown', 'html', render, true);
+hexo.extend.renderer.register('mkd', 'html', render, true);
+hexo.extend.renderer.register('mkdn', 'html', render, true);
+hexo.extend.renderer.register('mdwn', 'html', render, true);
+hexo.extend.renderer.register('mdtxt', 'html', render, true);
+hexo.extend.renderer.register('mdtext', 'html', render, true);
