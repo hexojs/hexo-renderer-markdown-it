@@ -5,6 +5,9 @@ const { readFileSync } = require('fs');
 const render = require('../lib/renderer');
 const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
 const Hexo = require('hexo');
+const {join} = require('path').posix;
+const {sep} = require('path');
+const {url_for} = require('hexo-util');
 
 describe('Hexo Renderer Markdown-it', () => {
   const hexo = new Hexo(__dirname, { silent: true });
@@ -298,6 +301,108 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.extend.renderer.register('md', 'html', renderer, true);
       const result = await hexo.post.render(null, { content: '**foo** {% lorem %}', engine });
       result.content.should.eql('<p><strong>foo</strong> {% lorem %}</p>\n');
+    });
+  });
+  describe('image options', () => {
+    const body = '![](/bar/baz.jpg)![foo](/aaa/bbb.jpg)';
+
+    it('add lazyload attribute', () => {
+      hexo.config.markdown.image = {lazyload: true};
+      const result = parse({text: body});
+      result.should.eql('<p><img src="/bar/baz.jpg" alt="" loading="lazy"><img src="/aaa/bbb.jpg" alt="foo" loading="lazy"></p>\n');
+    });
+    it('keep lazyload attribute', () => {
+      hexo.config.markdown.image = {lazyload: true};
+      const result = parse({text: body});
+      result.should.eql('<p><img src="/bar/baz.jpg" alt="" loading="lazy"><img src="/aaa/bbb.jpg" alt="foo" loading="lazy"></p>\n');
+    });
+    it('should prepend root', () => {
+      hexo.config.markdown.image = {prependRoot: true};
+      hexo.config.root = '/blog';
+      const result = parse({text: body});
+      result.should.eql('<p><img src="/blog/bar/baz.jpg" alt=""><img src="/blog/aaa/bbb.jpg" alt="foo"></p>\n');
+    });
+    describe('postAsset', () => {
+      const Post = hexo.model('Post');
+      const PostAsset = hexo.model('PostAsset');
+      beforeEach(() => {
+        hexo.config.post_asset_folder = true;
+        hexo.config.markdown.image = {
+          prependRoot: true,
+          postAsset: true
+        };
+      });
+      it('should prepend post path', async () => {
+        const asset = 'img/bar.svg';
+        const slug = asset.replace(/\//g, sep);
+        const content = `![](${asset})`;
+        const post = await Post.insert({
+          source: '_posts/foo.md',
+          slug: 'foo'
+        });
+        const postasset = await PostAsset.insert({
+          _id: `source/_posts/foo/${asset}`,
+          slug,
+          post: post._id
+        });
+
+        const expected = url_for.call(hexo, join(post.path, asset));
+        const result = parse({ text: content, path: post.full_source });
+        result.should.eql(`<p><img src="${expected}" alt=""></p>\n`);
+
+        // should not be Windows path
+        expected.includes('\\').should.eql(false);
+
+        await PostAsset.removeById(postasset._id);
+        await Post.removeById(post._id);
+      });
+
+      it('should not modify non-post asset', async () => {
+        const asset = 'bar.svg';
+        const siteasset = '/logo/brand.png';
+        const site = 'http://lorem.ipsum/dolor/huri.bun';
+        const content = `![](${asset})![](${siteasset})![](${site})`;
+        const post = await Post.insert({
+          source: '_posts/foo.md',
+          slug: 'foo'
+        });
+        const postasset = await PostAsset.insert({
+          _id: `source/_posts/foo/${asset}`,
+          slug: asset,
+          post: post._id
+        });
+
+        const result = parse({ text: content, path: post.full_source });
+        result.should.eql([
+          `<p><img src="${url_for.call(hexo, join(post.path, asset))}" alt="">`,
+          `<img src="${siteasset}" alt="">`,
+          `<img src="${site}" alt=""></p>`
+        ].join('') + '\n');
+
+        await PostAsset.removeById(postasset._id);
+        await Post.removeById(post._id);
+      });
+      it('post located in subfolder', async () => {
+        const asset = 'img/bar.svg';
+        const slug = asset.replace(/\//g, sep);
+        const content = `![](${asset})`;
+        const post = await Post.insert({
+          source: '_posts/lorem/foo.md',
+          slug: 'foo'
+        });
+        const postasset = await PostAsset.insert({
+          _id: `source/_posts/lorem/foo/${asset}`,
+          slug,
+          post: post._id
+        });
+
+        const expected = url_for.call(hexo, join(post.path, asset));
+        const result = parse({ text: content, path: post.full_source });
+        result.should.eql(`<p><img src="${expected}" alt=""></p>\n`);
+
+        await PostAsset.removeById(postasset._id);
+        await Post.removeById(post._id);
+      });
     });
   });
 });

@@ -46,6 +46,8 @@ markdown:
     permalinkSymbol: '¶'
     case: 0
     separator: '-'
+  image:
+    lazyload: false
 ```
 
 Refer to [the wiki](https://github.com/hexojs/hexo-renderer-markdown-it/wiki) for more details.
