@@ -25,13 +25,13 @@ This renderer plugin uses [Markdown-it] as a render engine on [Hexo]. Adds suppo
 
 A default Hexo installation will include a markdown renderer plugin which uses `marked`, so you will have to remove it if you want to use `hexo-renderer-markdown-it`.
 
-``` PowerShell
+``` sh
 $ npm un hexo-renderer-marked --save
 ```
 
 If you have already removed the default renderer, and others you might of added, you can now safely install `hexo-renderer-markdown-it`
 
-``` powershell
+``` sh
 $ npm i hexo-renderer-markdown-it --save
 ```
 
