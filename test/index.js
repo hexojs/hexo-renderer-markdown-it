@@ -2,13 +2,12 @@
 
 require('chai').should();
 const { readFileSync } = require('fs');
-const render = require('../lib/renderer');
+const Renderer = require('../lib/renderer');
 const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
 const Hexo = require('hexo');
 
 describe('Hexo Renderer Markdown-it', () => {
   const hexo = new Hexo(__dirname, { silent: true });
-  const parse = render.bind(hexo);
   const defaultCfg = JSON.parse(JSON.stringify(Object.assign(hexo.config, {
     markdown: {
       preset: 'default',
@@ -42,9 +41,9 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.preset = 'default';
 
       const parsed_gfm = readFileSync('./test/fixtures/outputs/default.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+
       result.should.equal(parsed_gfm);
     });
 
@@ -52,9 +51,9 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.preset = 'commonmark';
 
       const parsed_commonmark = readFileSync('./test/fixtures/outputs/commonmark.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+
       result.should.equal(parsed_commonmark);
     });
 
@@ -63,9 +62,9 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown = 'commonmark';
 
       const parsed_commonmark = readFileSync('./test/fixtures/outputs/commonmark-deprecated.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+
       result.should.equal(parsed_commonmark);
     });
 
@@ -73,9 +72,8 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.preset = 'zero';
 
       const parsed_zero = readFileSync('./test/fixtures/outputs/zero.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
       result.should.equal(parsed_zero);
     });
   });
@@ -94,9 +92,8 @@ describe('Hexo Renderer Markdown-it', () => {
 
       const parsed_custom = readFileSync('./test/fixtures/outputs/custom.html', 'utf8');
       const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
       result.should.equal(parsed_custom);
     });
 
@@ -106,7 +103,8 @@ describe('Hexo Renderer Markdown-it', () => {
       };
 
       const text = '```js\nexample\n```';
-      const result = parse({ text });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(text);
       result.should.eql('<pre><code class="lang-js">example\n</code></pre>\n');
     });
   });
@@ -127,9 +125,8 @@ describe('Hexo Renderer Markdown-it', () => {
 
       const parsed_plugins = readFileSync('./test/fixtures/outputs/plugins.html', 'utf8');
       const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
       result.should.equal(parsed_plugins);
     });
 
@@ -146,7 +143,8 @@ describe('Hexo Renderer Markdown-it', () => {
       ];
 
       const text = ':smile:';
-      const result = parse({ text });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(text);
       result.should.equal('<p>:lorem:</p>\n');
     });
   });
@@ -161,9 +159,8 @@ describe('Hexo Renderer Markdown-it', () => {
         permalinkSymbol: '¶'
       };
       const expected = readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
 
       result.should.eql(expected);
     });
@@ -176,9 +173,9 @@ describe('Hexo Renderer Markdown-it', () => {
         permalinkClass: 'header-anchor',
         permalinkSymbol: '¶'
       };
-      const result = parse({
-        text: '# This is an H1 title\n# This is an H1 title'
-      });
+
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render('# This is an H1 title\n# This is an H1 title');
       const expected = '<h1 id="This-is-an-H1-title">This is an H1 title</h1>\n<h1 id="This-is-an-H1-title-2">This is an H1 title</h1>\n';
 
       result.should.eql(expected);
@@ -191,9 +188,8 @@ describe('Hexo Renderer Markdown-it', () => {
         separator: '_'
       };
 
-      const result = parse({
-        text: '## foo BAR'
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render('## foo BAR');
 
       result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
     });
@@ -209,7 +205,8 @@ describe('Hexo Renderer Markdown-it', () => {
           permalinkSide: 'left',
           permalinkSymbol: '#'
         };
-        const result = parse({ text });
+        const renderer = new Renderer(hexo);
+        const result = renderer.parser.render(text);
 
         result.should.equal('<h2 id="foo"><a class="anchor" href="#foo">#</a>foo</h2>\n');
       });
@@ -222,7 +219,8 @@ describe('Hexo Renderer Markdown-it', () => {
           permalinkSide: 'right',
           permalinkSymbol: '#'
         };
-        const result = parse({ text });
+        const renderer = new Renderer(hexo);
+        const result = renderer.parser.render(text);
 
         result.should.equal('<h2 id="foo">foo<a class="anchor" href="#foo">#</a></h2>\n');
       });
@@ -235,9 +233,9 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.enable_rules = ['link', 'image'];
 
       const parsed_zero = readFileSync('./test/fixtures/outputs/zero-enable_rules.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+
       result.should.equal(parsed_zero);
     });
 
@@ -247,18 +245,19 @@ describe('Hexo Renderer Markdown-it', () => {
       hexo.config.markdown.disable_rules = 'link';
 
       const parsed = readFileSync('./test/fixtures/outputs/default-disable_rules.html', 'utf8');
-      const result = parse({
-        text: source
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+
       result.should.equal(parsed);
     });
   });
 
   describe('execFilter', () => {
     it('default', () => {
-      const result = parse({
-        text: '[foo](javascript:bar)'
-      });
+
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render('[foo](javascript:bar)');
+
       result.should.equal('<p>[foo](javascript:bar)</p>\n');
     });
 
@@ -267,9 +266,9 @@ describe('Hexo Renderer Markdown-it', () => {
         md.validateLink = function() { return true; };
       });
 
-      const result = parse({
-        text: '[foo](javascript:bar)'
-      });
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render('[foo](javascript:bar)');
+
       result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
     });
   });
@@ -281,11 +280,16 @@ describe('Hexo Renderer Markdown-it', () => {
 
     before(async () => {
       await hexo.init();
-      hexo.extend.tag.register('lorem', loremFn);
-      hexo.extend.renderer.register('md', 'html', require('../lib/renderer'), true);
-    });
+      hexo.config.markdown = {};
 
-    beforeEach(() => { hexo.config.markdown = {}; });
+      const renderer = new Renderer(hexo);
+      function render(data, options) {
+        return renderer.parser.render(data.text);
+      }
+
+      hexo.extend.tag.register('lorem', loremFn);
+      hexo.extend.renderer.register('md', 'html', render, true);
+    });
 
     it('default', async () => {
       const result = await hexo.post.render(null, { content: '**foo** {% lorem %}', engine });
