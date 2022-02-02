@@ -256,7 +256,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('default', () => {
 
       const renderer = new Renderer(hexo);
-      const result = renderer.parser.render('[foo](javascript:bar)');
+      const result = renderer.render({ text: '[foo](javascript:bar)' });
 
       result.should.equal('<p>[foo](javascript:bar)</p>\n');
     });
@@ -267,9 +267,29 @@ describe('Hexo Renderer Markdown-it', () => {
       });
 
       const renderer = new Renderer(hexo);
-      const result = renderer.parser.render('[foo](javascript:bar)');
+      const result = renderer.render({ text: '[foo](javascript:bar)' });
 
       result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
+    });
+
+    it('should be called in render', () => {
+      const spy = {
+        called: 0,
+        call() {
+          this.called++;
+        }
+      };
+
+      hexo.extend.filter.register('markdown-it:renderer', md => {
+        spy.call(md);
+      });
+
+      const renderer = new Renderer(hexo);
+      for (let i = 0; i < 3; i++) {
+        renderer.render({ text: '' });
+      }
+
+      spy.called.should.equal(3);
     });
   });
 

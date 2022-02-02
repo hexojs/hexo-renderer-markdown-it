@@ -34,7 +34,7 @@ const renderer = new Renderer(hexo);
 renderer.disableNunjucks = Boolean(hexo.config.markdown.disableNunjucks);
 
 function render(data, options) {
-  return renderer.parser.render(data.text);
+  return renderer.render(data, options);
 }
 
 hexo.extend.renderer.register('md', 'html', render, true);
