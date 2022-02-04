@@ -256,20 +256,56 @@ describe('Hexo Renderer Markdown-it', () => {
     it('default', () => {
 
       const renderer = new Renderer(hexo);
-      const result = renderer.parser.render('[foo](javascript:bar)');
+      const result = renderer.render({ text: '[foo](javascript:bar)' });
 
       result.should.equal('<p>[foo](javascript:bar)</p>\n');
     });
 
     it('enable unsafe link', () => {
-      hexo.extend.filter.register('markdown-it:renderer', md => {
+      const filter = md => {
         md.validateLink = function() { return true; };
-      });
+      };
+      hexo.extend.filter.register('markdown-it:renderer', filter);
 
       const renderer = new Renderer(hexo);
-      const result = renderer.parser.render('[foo](javascript:bar)');
+      const result = renderer.render({ text: '[foo](javascript:bar)' });
+
+      hexo.extend.filter.unregister('markdown-it:renderer', filter);
 
       result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
+    });
+
+    it('should execute loaded scripts', async () => {
+      const renderer = new Renderer(hexo);
+
+      hexo.env.init = true;
+      await hexo.init();
+
+      const result = renderer.render({ text: '[foo](javascript:bar)' });
+
+      result.should.equal('<p><a href="javascript:bar">foo</a></p>\n');
+    });
+
+    it('should be called in render', () => {
+      const iterates = 3;
+      const spy = {
+        called: 0,
+        call() {
+          this.called++;
+        }
+      };
+
+      const filter = md => spy.call(md);
+      hexo.extend.filter.register('markdown-it:renderer', filter);
+
+      const renderer = new Renderer(hexo);
+      for (let i = 0; i < iterates; i++) {
+        renderer.render({ text: '' });
+      }
+
+      hexo.extend.filter.unregister('markdown-it:renderer', filter);
+
+      spy.called.should.equal(iterates);
     });
   });
 
