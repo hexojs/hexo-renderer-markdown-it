@@ -194,6 +194,23 @@ describe('Hexo Renderer Markdown-it', () => {
       result.should.equal('<h2 id="foo_bar">foo BAR</h2>\n');
     });
 
+    it('multiple posts anchor id', () => {
+      hexo.config.markdown.anchors = {
+        level: 2,
+        collisionSuffix: 'ver',
+        permalink: true,
+        permalinkClass: 'header-anchor',
+        permalinkSymbol: '¶'
+      };
+      const expected = readFileSync('./test/fixtures/outputs/anchors.html', 'utf8');
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(source);
+      const result2 = renderer.parser.render(source);
+
+      result.should.eql(expected);
+      result2.should.eql(expected);
+    });
+
     describe('permalinkSide', () => {
       const text = '## foo';
 
