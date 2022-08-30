@@ -221,3 +221,7 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
+
+### [Attributes](https://github.com/arve0/markdown-it-attrs) { data-attr=true }
+
+This is an attribute example.

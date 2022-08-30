@@ -248,9 +248,9 @@ markdown:
     # Minimum level for ID creation. (Ex. h2 to h6)
     level: 2
     # A suffix that is prepended to the number given if the ID is repeated.
-    collisionSuffix: ''           
+    collisionSuffix: ''
     # If `true`, creates an anchor tag with a permalink besides the heading.
-    permalink: false              
+    permalink: false
     # Class used for the permalink anchor tag.
     permalinkClass: header-anchor
     # Set to 'right' to add permalink after heading
@@ -267,6 +267,7 @@ markdown:
 
 Included plugins:
 - markdown-it-abbr
+- markdown-it-attrs
 - markdown-it-cjk-breaks
 - markdown-it-container
 - markdown-it-deflist

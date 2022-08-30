@@ -113,6 +113,7 @@ describe('Hexo Renderer Markdown-it', () => {
     it('default', () => {
       hexo.config.markdown.plugins = [
         'markdown-it-abbr',
+        'markdown-it-attrs',
         'markdown-it-container',
         'markdown-it-deflist',
         'markdown-it-emoji',
