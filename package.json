@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-markdown-it",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "description": "Markdown-it is a Markdown parser, done right. A faster and CommonMark compliant alternative for Hexo.",
   "main": "index.js",
   "scripts": {
