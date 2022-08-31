@@ -60,6 +60,10 @@ markdown:
     permalinkSymbol: '¶'
     case: 0
     separator: '-'
+  images:
+    lazyload: false
+    prepend_root: false
+    post_asset: false
 ```
 
 See below for more details.
