@@ -2,7 +2,7 @@
 
 require('chai').should();
 const { readFileSync } = require('fs');
-const { join } = require('path/posix');
+const { join } = require('path').posix;
 const { sep } = require('path');
 const Renderer = require('../lib/renderer');
 const source = readFileSync('./test/fixtures/markdownit.md', 'utf8');
