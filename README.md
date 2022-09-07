@@ -335,6 +335,72 @@ Save the file in "scripts/" folder and run Hexo as usual.
 
 Refer to markdown-it [API documentation](https://markdown-it.github.io/markdown-it/#MarkdownIt).
 
+## Frequently Asked Questions
+
+### Missing Styles of GFM Task Lists
+
+In general, adding the following styles to the theme can solve the problem.
+
+```css
+li.task-list-item {
+  list-style-type: none;
+}
+
+li.task-list-item .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.6em;
+}
+```
+
+### How can I add math support?
+
+First, install KaTeX plugin for markdown-it.
+
+```bash
+npm install katex @renbaoshuo/markdown-it-katex
+```
+
+Then add [`@renbaoshuo/markdown-it-katex`](https://github.com/renbaoshuo/markdown-it-katex) to plugins list.
+
+```yaml
+plugins:
+  - '@renbaoshuo/markdown-it-katex'
+  # Other plugins...
+```
+
+If you need to allow spaces before and after delimiters (e.g. `$ 1 + 1 = 2 $`), set the `skipDelimitersCheck` option to `true`:
+
+```yaml
+plugins:
+  - name: '@renbaoshuo/markdown-it-katex'
+    options:
+      skipDelimitersCheck: true
+```
+
+Don't forget to include the KaTeX stylesheet in your html:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+```
+
+### How can I merge table cells with the same content?
+
+Install the [`markdown-it-merge-cells`](https://github.com/Menci/markdown-it-merge-cells) plugin.
+
+```bash
+npm install markdown-it-merge-cells
+```
+
+Then add the plugin to plugins list.
+
+```yaml
+plugins:
+  - markdown-it-merge-cells
+  # Other plugins...
+```
+
 ## Requests and bug reports
 
 If you have any feature requests or bugs to report, you're welcome to [file an issue](https://github.com/hexojs/hexo-renderer-markdown-it/issues).
