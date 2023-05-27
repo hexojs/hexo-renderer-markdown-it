@@ -63,6 +63,7 @@ markdown:
     lazyload: false
     prepend_root: false
     post_asset: false
+  inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline
 ```
 
 See below for more details.
