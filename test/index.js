@@ -110,6 +110,15 @@ describe('Hexo Renderer Markdown-it', () => {
       const result = renderer.parser.render(text);
       result.should.eql('<pre><code class="lang-js">example\n</code></pre>\n');
     });
+
+    it('render inline', () => {
+      const text = 'inline text';
+      const renderer = new Renderer(hexo);
+      const resultBlock = renderer.render({ text });
+      const resultInline = renderer.render({ text }, { inline: true });
+      resultBlock.should.eql('<p>inline text</p>\n');
+      resultInline.should.eql('inline text');
+    })
   });
 
   describe('plugins', () => {
