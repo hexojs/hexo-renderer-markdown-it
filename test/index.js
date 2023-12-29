@@ -118,7 +118,7 @@ describe('Hexo Renderer Markdown-it', () => {
       const resultInline = renderer.render({ text }, { inline: true });
       resultBlock.should.eql('<p>inline text</p>\n');
       resultInline.should.eql('inline text');
-    })
+    });
   });
 
   describe('plugins', () => {
@@ -401,6 +401,15 @@ describe('Hexo Renderer Markdown-it', () => {
       const result = renderer.render({ text: body });
 
       result.should.eql('<p><img src="/blog/bar/baz.jpg" alt=""></p>\n');
+    });
+
+    it('alt text', () => {
+      hexo.config.markdown.images = { test: true };
+
+      const renderer = new Renderer(hexo);
+      const result = renderer.render({ text: '![alt text](/bar/baz.jpg)' });
+
+      result.should.eql('<p><img src="/bar/baz.jpg" alt="alt text"></p>\n');
     });
 
     describe('post_asset', () => {
