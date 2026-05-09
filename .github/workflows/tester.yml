@@ -2,6 +2,9 @@ name: Tester
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   linter:
     runs-on: ubuntu-slim
