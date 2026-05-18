@@ -303,6 +303,10 @@ markdown:
           laughing: ':D'
     - name: 'other-plugin'
       options: ...
+    # For ESM plugins or plugins with named exports
+    - name: 'some-esm-plugin'
+      import: 'default' # Optional, defaults to 'default'
+      options: ...
 ```
 
 ## Extensibility

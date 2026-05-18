@@ -160,6 +160,33 @@ describe('Hexo Renderer Markdown-it', () => {
       const result = renderer.parser.render(text);
       result.should.equal('<p>:lorem:</p>\n');
     });
+
+    it('esm plugin - default export', () => {
+      hexo.config.markdown.plugins = [
+        {
+          name: require('path').join(__dirname, 'fixtures/plugin_esm_mock')
+        }
+      ];
+
+      const text = 'text';
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(text);
+      result.should.contain('[[esm_default]]');
+    });
+
+    it('esm plugin - named export', () => {
+      hexo.config.markdown.plugins = [
+        {
+          name: require('path').join(__dirname, 'fixtures/plugin_esm_mock'),
+          import: 'named'
+        }
+      ];
+
+      const text = 'text';
+      const renderer = new Renderer(hexo);
+      const result = renderer.parser.render(text);
+      result.should.contain('[[esm_named]]');
+    });
   });
 
   describe('anchors', () => {
